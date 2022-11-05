@@ -1,16 +1,18 @@
-import React from 'react'
-import { Button } from '@chakra-ui/react'
+import React from "react";
+import { Button } from "@chakra-ui/react";
 
 type Props = {
   children: React.ReactNode;
-}
+};
 
 const Btn: React.FC<Props> = (props) => {
-  const { children } = props
+  const { children } = props;
 
   return (
-    <Button bg="brand.action" color='#fff'>{children}</Button>
-  )
-}
+    <Button bg="brand.action" color="#fff" fontSize={{ md: "2xl" }} letterSpacing="0.08em" h={{ base: "40px", md: "60px" }} px={{ base: 4, md: 8 }}>
+      {children}
+    </Button>
+  );
+};
 
-export default Btn
+export default Btn;
