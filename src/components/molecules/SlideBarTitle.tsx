@@ -15,7 +15,7 @@ const SlideBarTitle: React.FC<Props> = (props) => {
         <InitialPFC fontSize={{ base: "sm", md: "2xl" }} width={{ base: "20px", md: "40px" }}>
           {cercleInnerText}
         </InitialPFC>
-        <Text fontSize={{ base: "md", md: "xl" }} fontWeight={700}>
+        <Text fontSize={{ base: "md", md: "xl" }} fontWeight={700} letterSpacing="0.2em">
           {title}
         </Text>
       </Box>

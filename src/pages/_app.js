@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import theme from '../theme'
 import { ChakraProvider } from '@chakra-ui/react'
+import { RecoilRoot } from 'recoil'
 
 import '../../styles/globals.css'
 
@@ -15,9 +16,11 @@ function MyApp({ Component, pageProps }) {
         />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
-      <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
+      <RecoilRoot>
+        <ChakraProvider theme={theme}>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </RecoilRoot>
     </>
   )
 }
