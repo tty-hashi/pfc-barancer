@@ -5,7 +5,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Btn: React.FC<Props> = (props) => {
+const ButtonSquare: React.FC<Props> = (props) => {
   const { children } = props;
 
   return (
@@ -15,4 +15,4 @@ const Btn: React.FC<Props> = (props) => {
   );
 };
 
-export default Btn;
+export default ButtonSquare;
