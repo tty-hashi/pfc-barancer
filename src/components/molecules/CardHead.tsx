@@ -5,7 +5,8 @@ import { goodsList } from "../recoil/states";
 
 const CardHead = () => {
   const fontSize = { base: "xs", md: "sm" };
-  // const goodsListState = useRecoilValue(goodsList);
+  const goodsListState = useRecoilValue(goodsList);
+  console.log(goodsListState);
 
   return (
     <Flex justifyContent="space-between">
