@@ -24,7 +24,7 @@ const theme = extendTheme({
   },
   colors: {
     brand: {
-      main: "#FCC05C",
+      main: "#FCC05C", //2(252, 192, 92, 1)
       bg: "#F7D2B0",
       action: "#F8730E",
       denger: "#f7fafc",

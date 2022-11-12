@@ -15,20 +15,24 @@ type Props = {
     base: string;
     md: string;
   };
+  goodsCarbo: string;
+  goodsFat: string;
+  goodsProtein: string;
 };
 
 const CardFooter: React.FC<Props> = (props) => {
-  const { initialFontSize, initialWidth, gap = { base: "5px", md: 2 } } = props;
+  const { initialFontSize, initialWidth, gap = { base: "5px", md: 2 }, goodsCarbo, goodsFat, goodsProtein } = props;
+
   return (
     <Grid templateColumns="repeat(3, 1fr)" gap={gap} maxW={{ base: "200px", md: "auto" }} mx="auto">
       <GridItem>
-        <NutritionCapacity pfcTitle="P" amountValue="111" initialFontSize={initialFontSize} initialWidth={initialWidth} />
+        <NutritionCapacity pfcTitle="P" amountValue={goodsCarbo} initialFontSize={initialFontSize} initialWidth={initialWidth} />
       </GridItem>
       <GridItem>
-        <NutritionCapacity pfcTitle="F" amountValue="111" initialFontSize={initialFontSize} initialWidth={initialWidth} />
+        <NutritionCapacity pfcTitle="F" amountValue={goodsFat} initialFontSize={initialFontSize} initialWidth={initialWidth} />
       </GridItem>
       <GridItem>
-        <NutritionCapacity pfcTitle="C" amountValue="111" initialFontSize={initialFontSize} initialWidth={initialWidth} />
+        <NutritionCapacity pfcTitle="C" amountValue={goodsProtein} initialFontSize={initialFontSize} initialWidth={initialWidth} />
       </GridItem>
     </Grid>
   );

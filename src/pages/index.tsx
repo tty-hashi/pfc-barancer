@@ -8,11 +8,18 @@ import Toast from "../components/atoms/Toast";
 import LayoutContainer from "../components/atoms/LayoutContainer";
 import ButtonCercleOrangeCart from "../components/atoms/ButtonCercleOrangeCart";
 import { goodsFetch } from "../api/fetch";
+import { useSetRecoilState } from "recoil";
+import { goodsList } from "../components/recoil/states";
 
 export default function Home() {
+  const setgoodsListState = useSetRecoilState(goodsList);
   Toast();
+
+  // firebase からデータと fetch して state へ保持
   useEffect(() => {
-    goodsFetch();
+    goodsFetch().then((result) => {
+      setgoodsListState(result);
+    });
   }, []);
 
   return (
