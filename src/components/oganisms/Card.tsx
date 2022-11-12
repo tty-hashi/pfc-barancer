@@ -8,15 +8,23 @@ import ModalGoodsDateil from "../atoms/ModalGoodsDateil";
 
 type Props = {
   cercleOrangeButton: React.ReactNode;
+  goodsId: string;
+  goodsUrl: string;
+  goodsCarbo: string;
+  goodsFat: string;
+  goodsProtein: string;
+  goodsCalorie: string;
+  goodsValue: string;
+  goodsTitle: string;
 };
 
 const Card: React.FC<Props> = (props) => {
-  const { cercleOrangeButton } = props;
+  const { cercleOrangeButton, goodsId, goodsUrl, goodsCarbo, goodsFat, goodsProtein, goodsCalorie, goodsValue, goodsTitle } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box bg="#eee" py={{ base: 2, md: 4 }} px={2}>
+    <Box bg="#eee" py={{ base: 2, md: 4 }} h="100%" px={2}>
       <Box>
-        <CardHead />
+        <CardHead goodsTitle={goodsTitle} goodsCalorie={goodsCalorie} />
         <Box maxW="60%" mx="auto" my={{ base: 4, md: 6 }} onClick={onOpen}>
           <Image src="/meat.svg" />
         </Box>
@@ -25,10 +33,10 @@ const Card: React.FC<Props> = (props) => {
         </Box>
       </Box>
       <Box>
-        <CardFooter />
+        <CardFooter goodsCarbo={goodsCarbo} goodsFat={goodsFat} goodsProtein={goodsProtein} />
       </Box>
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalGoodsDateil />
+        <ModalGoodsDateil goodsId={goodsId} goodsUrl={goodsUrl} goodsCarbo={goodsCarbo} goodsFat={goodsFat} goodsProtein={goodsProtein} goodsCalorie={goodsCalorie} goodsValue={goodsValue} goodsTitle={goodsTitle} />
       </Modal>
     </Box>
   );
