@@ -1,5 +1,6 @@
 import { atom } from "recoil";
-type GoodsList = {
+export type GoodsList = {
+  id: string;
   goodsUrl: string;
   goodsCarbo: string;
   goodsFat: string;
@@ -10,6 +11,6 @@ type GoodsList = {
 };
 
 export const goodsList = atom<GoodsList[]>({
-  key: "goodsList", //一意の値
+  key: "goodsListState", //一意の値
   default: [], //初期値
 });
