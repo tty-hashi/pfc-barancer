@@ -1,5 +1,3 @@
-import { useSetRecoilState } from "recoil";
-import { goodsList } from "../components/recoil/states";
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../firebaseSettings/firebase";
 
@@ -21,3 +19,11 @@ export const goodsFetch = async () => {
   });
   return goodsList;
 };
+
+// export const FetchGoodsListSouce = () => {
+//   let goodsList = [];
+//   goodsFetch().then((result) => {
+//     goodsList = result;
+//   });
+//   return goodsList;
+// };

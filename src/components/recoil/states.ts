@@ -11,6 +11,22 @@ export type GoodsList = {
 };
 
 export const goodsList = atom<GoodsList[]>({
-  key: "goodsListState", //一意の値
-  default: [], //初期値
+  key: "goodsListState",
+  default: [],
+});
+export const goodsListSource = atom<GoodsList[]>({
+  key: "goodsListSource",
+  default: [],
+});
+export const silderValueProtein = atom<number>({
+  key: "silderValueProtein",
+  default: 50,
+});
+export const silderValueFat = atom<number>({
+  key: "silderValueaFat",
+  default: 50,
+});
+export const silderValueCarbo = atom<number>({
+  key: "silderValueCarbo",
+  default: 50,
 });
