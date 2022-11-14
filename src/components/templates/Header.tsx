@@ -2,8 +2,20 @@ import React from "react";
 import { Box, Flex, Heading, Spacer } from "@chakra-ui/react";
 
 import ButtonSquare from "../atoms/ButtonSquare";
+import { useSetRecoilState } from "recoil";
+import { userId } from "../recoil/states";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, singInWithGoogle } from "../../firebaseSettings/firebase";
 
 const Header = () => {
+  const setUserId = useSetRecoilState(userId)
+  // userの変更をfirebasehooksで検知してstateを書き換え
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUserId(user.uid);
+    }
+  });
+
   return (
     <>
       <Box bg="brand.main">
@@ -12,7 +24,7 @@ const Header = () => {
             PFC BRANCER
           </Heading>
           <Spacer />
-          <ButtonSquare>Sing In</ButtonSquare>
+          <ButtonSquare onClick={singInWithGoogle}>Sing In</ButtonSquare>
         </Flex>
       </Box>
     </>
