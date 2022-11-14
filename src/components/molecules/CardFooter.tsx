@@ -26,13 +26,13 @@ const CardFooter: React.FC<Props> = (props) => {
   return (
     <Grid templateColumns="repeat(3, 1fr)" gap={gap} maxW={{ base: "200px", md: "auto" }} mx="auto">
       <GridItem>
-        <NutritionCapacity pfcTitle="P" amountValue={goodsCarbo} initialFontSize={initialFontSize} initialWidth={initialWidth} />
+        <NutritionCapacity pfcTitle="P" amountValue={goodsProtein} initialFontSize={initialFontSize} initialWidth={initialWidth} />
       </GridItem>
       <GridItem>
         <NutritionCapacity pfcTitle="F" amountValue={goodsFat} initialFontSize={initialFontSize} initialWidth={initialWidth} />
       </GridItem>
       <GridItem>
-        <NutritionCapacity pfcTitle="C" amountValue={goodsProtein} initialFontSize={initialFontSize} initialWidth={initialWidth} />
+        <NutritionCapacity pfcTitle="C" amountValue={goodsCarbo} initialFontSize={initialFontSize} initialWidth={initialWidth} />
       </GridItem>
     </Grid>
   );
