@@ -14,7 +14,7 @@ const CardGrid: React.FC<Props> = (props) => {
   const goodsListState = useRecoilValue(goodsList);
 
   return (
-    <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }} gap={{ base: 2, md: 6 }}>
+    <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }} gap={{ base: 2, md: 6 }} minH="80vh">
       {goodsListState.map((goods) => (
         <GridItem key={goods.id}>
           <Card cercleOrangeButton={cercleOrangeButton} goodsId={goods.id} goodsUrl={goods.goodsUrl} goodsCarbo={goods.goodsCarbo} goodsFat={goods.goodsFat} goodsProtein={goods.goodsProtein} goodsCalorie={goods.goodsCalorie} goodsValue={goods.goodsValue} goodsTitle={goods.goodsTitle} />
