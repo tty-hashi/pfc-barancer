@@ -17,7 +17,7 @@ const CardGrid: React.FC<Props> = (props) => {
     <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }} gap={{ base: 2, md: 6 }} minH="80vh">
       {goodsListState.map((goods) => (
         <GridItem key={goods.id}>
-          <Card cercleOrangeButton={cercleOrangeButton} goodsId={goods.id} goodsUrl={goods.goodsUrl} goodsCarbo={goods.goodsCarbo} goodsFat={goods.goodsFat} goodsProtein={goods.goodsProtein} goodsCalorie={goods.goodsCalorie} goodsValue={goods.goodsValue} goodsTitle={goods.goodsTitle} />
+          <Card cercleOrangeButton={cercleOrangeButton} goodsId={goods.id} goodsUrl={goods.goodsUrl} goodsCarbo={goods.goodsCarbo} goodsFat={goods.goodsFat} goodsProtein={goods.goodsProtein} goodsCalorie={goods.goodsCalorie} goodsValue={goods.goodsValue} goodsTitle={goods.goodsTitle} goodsAllData={goods.goodsAllData} />
         </GridItem>
       ))}
     </Grid>

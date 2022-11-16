@@ -23,7 +23,7 @@ export default function Home() {
       setGoodsListSourceState(result);
     });
   }, []);
-
+  
   return (
     <>
       <Header />

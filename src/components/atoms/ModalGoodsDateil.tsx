@@ -18,10 +18,11 @@ type Props = {
   goodsCalorie: string;
   goodsValue: string;
   goodsTitle: string;
+  goodsAllData:string;
 };
 
 const ModalGoodsDateil: React.FC<Props> = (props) => {
-  const { goodsId, goodsUrl, goodsCarbo, goodsFat, goodsProtein, goodsCalorie, goodsValue, goodsTitle } = props;
+  const { goodsId, goodsUrl, goodsCarbo, goodsFat, goodsProtein, goodsCalorie, goodsValue, goodsTitle,goodsAllData } = props;
   const { onOpen } = useDisclosure();
   return (
     <>
@@ -37,7 +38,7 @@ const ModalGoodsDateil: React.FC<Props> = (props) => {
           </Box>
           <GoodsTitle>{goodsTitle}</GoodsTitle>
           <GoodsPrice>{goodsValue}</GoodsPrice>
-          <GoodsContentDateil>熱量：160kcal、たんぱく質：3.0g、脂質：0.8g、炭水化物：36.5g（糖質：34.2g、食物繊維：2.3g）、食塩相当量：1.7g</GoodsContentDateil>
+          <GoodsContentDateil>{goodsAllData}</GoodsContentDateil>
         </ModalBody>
         <ModalFooter>
           <Flex justifyContent="space-between" alignItems="center" w="100%">
