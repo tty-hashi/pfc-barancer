@@ -8,6 +8,7 @@ export type GoodsList = {
   goodsCalorie: string;
   goodsValue: string;
   goodsTitle: string;
+  goodsAllData:string;
 };
 
 export const goodsList = atom<GoodsList[]>({
@@ -29,4 +30,8 @@ export const silderValueFat = atom<number>({
 export const silderValueCarbo = atom<number>({
   key: "silderValueCarbo",
   default: 50,
+});
+export const userIdState = atom<string>({
+  key: "userId",
+  default: '',
 });

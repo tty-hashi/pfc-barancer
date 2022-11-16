@@ -15,6 +15,7 @@ export const goodsFetch = async () => {
       goodsFat: doc.data().goodsFat,
       goodsCarbo: doc.data().goodsCarbo,
       goodsUrl: doc.data().goodsUrl,
+      goodsAllData:doc.data().goodsAllData,
     });
   });
   return goodsList;
