@@ -6,8 +6,8 @@ import CardFooter from "../components/molecules/CardFooter";
 import PageLayout from "../components/molecules/PageLayout";
 import CardGrid from "../components/templates/CardGrid";
 import InputArea from "../components/molecules/InputArea";
-import ButtonSquare from "../components/atoms/ButtonSquare";
-import ButtonCercleOrangeTrash from "../components/atoms/ButtonCercleOrangeTrash";
+import ButtonSquare from "../components/atoms/buttons/ButtonSquare";
+import ButtonCercleOrangeTrash from "../components/atoms/buttons/ButtonCercleOrangeTrash";
 
 const TodayEatMenu = () => {
   const initialFontSize = { base: "lg", md: "xl" };

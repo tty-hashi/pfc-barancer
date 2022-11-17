@@ -1,9 +1,9 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import React from "react";
 import LayoutContainer from "../atoms/LayoutContainer";
-import SlideBarCarbo from "../atoms/SlideBarCarbo";
-import SlideBarFat from "../atoms/SlideBarFat";
-import SlideBarProtein from "../atoms/SlideBarProtein";
+import SlideBarCarbo from "../atoms/slideBar/SlideBarCarbo";
+import SlideBarFat from "../atoms/slideBar/SlideBarFat";
+import SlideBarProtein from "../atoms/slideBar/SlideBarProtein";
 import SlideBarGroup from "../oganisms/SlideBarGroup";
 
 const SlidebarGrid = () => {

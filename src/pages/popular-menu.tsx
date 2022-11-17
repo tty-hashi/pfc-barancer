@@ -2,7 +2,7 @@ import React from "react";
 import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import PageLayout from "../components/molecules/PageLayout";
 import { Box } from "@chakra-ui/react";
-import SlideBar from "../components/atoms/SlideBar";
+import SlideBar from "../components/atoms/slideBar/SlideBar";
 
 const PopularMenu = () => {
   return (

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Text } from "@chakra-ui/react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { GoodsList, goodsList, goodsListSource, silderValueFat, silderValueCarbo, silderValueProtein } from "../recoil/states";
+import { GoodsList, goodsList, goodsListSource, silderValueFat, silderValueCarbo, silderValueProtein } from "../../recoil/states";
 
 type Props = {
   renderValueTextValue33: string;

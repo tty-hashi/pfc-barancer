@@ -4,7 +4,7 @@ import { useDisclosure, Button} from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-import ButtonSquare from "../atoms/ButtonSquare";
+import ButtonSquare from "../atoms/buttons/ButtonSquare";
 import { useRecoilState } from "recoil";
 import { userIdState } from "../recoil/states";
 import { onAuthStateChanged } from "firebase/auth";
