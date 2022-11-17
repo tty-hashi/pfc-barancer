@@ -1,6 +1,6 @@
 import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
 import React from "react";
-import ButtonSquare from "../atoms/ButtonSquare";
+import ButtonSquare from "../atoms/buttons/ButtonSquare";
 import InputText from "../atoms/InputText";
 
 const InputArea = () => {

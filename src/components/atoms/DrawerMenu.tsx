@@ -1,6 +1,6 @@
 import React from "react";
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Input, UnorderedList, ListItem } from "@chakra-ui/react";
-import ButtonSquare from "./ButtonSquare";
+import ButtonSquare from "./buttons/ButtonSquare";
 import { logOut } from "../../firebaseSettings/firebase";
 import Link from "next/link";
 

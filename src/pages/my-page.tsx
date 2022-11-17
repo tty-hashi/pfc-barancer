@@ -4,8 +4,8 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import PageLayout from "../components/molecules/PageLayout";
 import CardGridMyPage from "../components/templates/CardGridMyPage";
-import ButtonCercleOrangeEditting from "../components/atoms/ButtonCercleOrangeEditting";
-import ButtonCercleOrangeTrash from "../components/atoms/ButtonCercleOrangeTrash";
+import ButtonCercleOrangeEditting from "../components/atoms/buttons/ButtonCercleOrangeEditting";
+import ButtonCercleOrangeTrash from "../components/atoms/buttons/ButtonCercleOrangeTrash";
 
 const Mypage = () => {
   return (

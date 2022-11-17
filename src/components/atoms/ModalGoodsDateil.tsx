@@ -7,7 +7,7 @@ import CardFooter from "../molecules/CardFooter";
 import GoodsTitle from "../atoms/GoodsTitle";
 import GoodsPrice from "../atoms/GoodsPrice";
 import GoodsContentDateil from "../atoms/GoodsContentDateil";
-import ButtonSquare from "../atoms/ButtonSquare";
+import ButtonSquare from "./buttons/ButtonSquare";
 import { useGoodsAddCart } from "../../hooks/useGoodsAddCart";
 import { useSetRecoilState } from "recoil";
 import { cart } from "../recoil/states";
@@ -28,11 +28,11 @@ type Props = {
 const ModalGoodsDateil: React.FC<Props> = (props) => {
   const { goodsId, goodsUrl, goodsCarbo, goodsFat, goodsProtein, goodsCalorie, goodsValue, goodsTitle, goodsAllData, onClose } = props;
   const { onOpen } = useDisclosure();
-  // const setCartState = useSetRecoilState(cart);
+  const setCartState = useSetRecoilState(cart);
 
   const goodsAddCart = (goodsId: string) => {
-    // setCartState((prev) => [...prev, goodsId]);
-    useGoodsAddCart(goodsId);
+    setCartState((prev) => [...prev, goodsId]);
+    // useGoodsAddCart(goodsId);
     onClose();
   };
 
@@ -62,11 +62,7 @@ const ModalGoodsDateil: React.FC<Props> = (props) => {
             </Box>
             <Spacer />
             <Box>
-              <ButtonSquare
-                onClick={() => {
-                  goodsAddCart(goodsId);
-                }}
-              >
+              <ButtonSquare onClick={() => { goodsAddCart(goodsId); }} >
                 追加
               </ButtonSquare>
             </Box>
