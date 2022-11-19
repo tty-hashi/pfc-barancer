@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Image, Modal, useDisclosure } from "@chakra-ui/react";
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 
 import CardHead from "../molecules/CardHead";
 import CardFooter from "../molecules/CardFooter";
@@ -18,11 +17,11 @@ type Props = {
   goodsCalorie: string;
   goodsValue: string;
   goodsTitle: string;
-  goodsAllData:string;
+  goodsAllData: string;
 };
 
 const Card: React.FC<Props> = (props) => {
-  const { cercleOrangeButton, goodsId, goodsUrl, goodsCarbo, goodsFat, goodsProtein, goodsCalorie, goodsValue, goodsTitle,goodsAllData } = props;
+  const { cercleOrangeButton, goodsId, goodsUrl, goodsCarbo, goodsFat, goodsProtein, goodsCalorie, goodsValue, goodsTitle, goodsAllData } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const userId = useRecoilValue(userIdState);
 
@@ -33,17 +32,17 @@ const Card: React.FC<Props> = (props) => {
         <Box maxW="60%" mx="auto" my={{ base: 4, md: 6 }} onClick={onOpen}>
           <Image src="/meat.svg" />
         </Box>
-        {userId &&
-        <Box ml="auto" mr={0} mb={{ base: 4, md: 6 }} width="fit-content">
-          {cercleOrangeButton}
-        </Box>
-        }
+        {userId && (
+          <Box ml="auto" mr={0} mb={{ base: 4, md: 6 }} width="fit-content" >
+            {cercleOrangeButton}
+          </Box>
+        )}
       </Box>
       <Box>
         <CardFooter goodsCarbo={goodsCarbo} goodsFat={goodsFat} goodsProtein={goodsProtein} />
       </Box>
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalGoodsDateil goodsId={goodsId} goodsUrl={goodsUrl} goodsCarbo={goodsCarbo} goodsFat={goodsFat} goodsProtein={goodsProtein} goodsCalorie={goodsCalorie} goodsValue={goodsValue} goodsTitle={goodsTitle} goodsAllData={goodsAllData} onClose={onClose}/>
+        <ModalGoodsDateil goodsId={goodsId} goodsUrl={goodsUrl} goodsCarbo={goodsCarbo} goodsFat={goodsFat} goodsProtein={goodsProtein} goodsCalorie={goodsCalorie} goodsValue={goodsValue} goodsTitle={goodsTitle} goodsAllData={goodsAllData} onClose={onClose} />
       </Modal>
     </Box>
   );

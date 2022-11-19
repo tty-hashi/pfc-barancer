@@ -15,9 +15,9 @@ type Props = {
     base: string;
     md: string;
   };
-  goodsCarbo: string;
-  goodsFat: string;
-  goodsProtein: string;
+  goodsCarbo: string | number;
+  goodsFat: string | number;
+  goodsProtein: string | number;
 };
 
 const CardFooter: React.FC<Props> = (props) => {
