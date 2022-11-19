@@ -1,22 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Box, Slider, SliderFilledTrack, SliderMark, SliderThumb, SliderTrack, Text } from "@chakra-ui/react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-import { GoodsList, goodsList, goodsListSource, silderValueFat, silderValueCarbo, silderValueProtein } from "../../recoil/states";
+import { goodsList, goodsListSource, silderValueFat, silderValueCarbo, silderValueProtein } from "../../recoil/states";
 
 type Props = {
   renderValueTextValue33: string;
   renderValueTextValue66: string;
   renderValueTextValue100: string;
   orMoreText: string;
-  // goodsListFilter?: (pram: number) => any;
   sliderValue: number;
   setSliderValue: (pram: number) => void;
 };
 
 const SlideBar: React.FC<Props> = (props) => {
   const { renderValueTextValue33, renderValueTextValue66, renderValueTextValue100, orMoreText, sliderValue, setSliderValue } = props;
-  // const [sliderValue, setSliderValue] = useState(50);
   const setGoodsListState = useSetRecoilState(goodsList);
   const goodsListSourceState = useRecoilValue(goodsListSource);
   // 各スライダーの現在の値
@@ -39,11 +37,7 @@ const SlideBar: React.FC<Props> = (props) => {
    * @return {GoodsList[]}
    */
   const goodsListFilter = (silderValueProteinState: number, silderValueaFatState: number, silderValueCarboState: number)=> {
-    const filteredGoods = goodsListSourceState.filter((goods) => {
-      console.log(sliderValueToNumber(silderValueProteinState,30) + 'gタンパク質');
-      console.log(sliderValueToNumber(silderValueaFatState,25) + 'g脂質');
-      console.log(sliderValueToNumber(silderValueCarboState,150) + 'g炭水化物');
-      
+    const filteredGoods = goodsListSourceState.filter((goods) => {      
       return Number(goods.goodsProtein) > sliderValueToNumber(silderValueProteinState,30) && Number(goods.goodsFat) < sliderValueToNumber(silderValueaFatState,25)&& Number(goods.goodsCarbo) < sliderValueToNumber(silderValueCarboState,150) ;
     });
     return filteredGoods;

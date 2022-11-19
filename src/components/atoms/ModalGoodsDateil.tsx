@@ -62,7 +62,11 @@ const ModalGoodsDateil: React.FC<Props> = (props) => {
             </Box>
             <Spacer />
             <Box>
-              <ButtonSquare onClick={() => { goodsAddCart(goodsId); }} >
+              <ButtonSquare
+                onClick={() => {
+                  goodsAddCart(goodsId);
+                }}
+              >
                 追加
               </ButtonSquare>
             </Box>
