@@ -4,7 +4,7 @@ import InitialPFC from "../atoms/InitialPFC";
 
 type Props = {
   pfcTitle: string;
-  amountValue: string;
+  amountValue: string | number;
   initialFontSize?: {
     base: string;
     md: string;

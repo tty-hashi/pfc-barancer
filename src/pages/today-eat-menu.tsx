@@ -6,24 +6,30 @@ import CardFooter from "../components/molecules/CardFooter";
 import PageLayout from "../components/molecules/PageLayout";
 import CardGrid from "../components/templates/CardGrid";
 import InputArea from "../components/molecules/InputArea";
-import ButtonSquare from "../components/atoms/ButtonSquare";
-import ButtonCercleOrangeTrash from "../components/atoms/ButtonCercleOrangeTrash";
+import ButtonSquare from "../components/atoms/buttons/ButtonSquare";
+import useCalculateInCart from "../hooks/useCalculateInCart";
+import { useRecoilValue } from "recoil";
+import { cart } from "../components/recoil/states";
 
 const TodayEatMenu = () => {
+  const [protein, fat, carbo, calorie, cartGoodsDatail] = useCalculateInCart();
+
+  // chakra レスポンシブ設定
   const initialFontSize = { base: "lg", md: "xl" };
   const initialWidth = { base: "24px", md: "30px" };
   const CardFooterGap = { base: "6", md: "10" };
+
   return (
     <PageLayout heading="Today Eat Menu" icon={faBurger}>
       <Flex alignItems="center" my={{ base: 10, md: 14 }}>
         <Text fontSize={{ base: "lg", md: "2xl" }} fontWeight="700">
-          Total: 1234 kcal
+          {`Total:${calorie} kcal`}
         </Text>
-        <CardFooter initialFontSize={initialFontSize} initialWidth={initialWidth} gap={CardFooterGap} />
+        <CardFooter initialFontSize={initialFontSize} initialWidth={initialWidth} gap={CardFooterGap} goodsCarbo={carbo} goodsFat={fat} goodsProtein={protein} />
       </Flex>
-      <CardGrid cercleOrangeButton={<ButtonCercleOrangeTrash />} />
+      <CardGrid goodsList={cartGoodsDatail} />
       <Box my={CardFooterGap}>
-        <InputArea />
+        <InputArea cartGoodsDatail={cartGoodsDatail} />
       </Box>
       <Box ml="auto" mr="0" w="fit-content">
         <ButtonSquare>戻る</ButtonSquare>

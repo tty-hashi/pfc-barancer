@@ -3,7 +3,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { singInWithGoogle } from "../../firebaseSettings/firebase";
 import { userIdState } from "../recoil/states";
-import ButtonSquare from "./ButtonSquare";
+import ButtonSquare from "./buttons/ButtonSquare";
 
 const TopFirstView = () => {
   const userId = useRecoilValue(userIdState);

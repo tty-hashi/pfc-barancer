@@ -19,6 +19,7 @@
     "@next/font": "^13.0.2",
     "@types/node": "^18.11.9",
     "@types/recoil": "^0.0.9",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "firebase": "^9.13.0",
     "framer-motion": "^7.6.4",
     "next": "13.0.2",

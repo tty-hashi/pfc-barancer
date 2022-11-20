@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
 import { Box, Flex, Heading, Spacer } from "@chakra-ui/react";
-import { useDisclosure, Button} from "@chakra-ui/react";
+import { useDisclosure, Button } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-import ButtonSquare from "../atoms/ButtonSquare";
+import ButtonSquare from "../atoms/buttons/ButtonSquare";
 import { useRecoilState } from "recoil";
 import { userIdState } from "../recoil/states";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth,  singInWithGoogle } from "../../firebaseSettings/firebase";
+import { auth, singInWithGoogle } from "../../firebaseSettings/firebase";
 import DrawerMenu from "../atoms/DrawerMenu";
 
 const Header = () => {
@@ -33,14 +33,14 @@ const Header = () => {
           <Spacer />
           {userId ? (
             <>
-              <Button ref={btnRef}  onClick={onOpen} >
-                <FontAwesomeIcon icon={faBars} color='#FCC05C' width='20px' />
+              <Button ref={btnRef} onClick={onOpen}>
+                <FontAwesomeIcon icon={faBars} color="#FCC05C" width="20px" />
               </Button>
               <DrawerMenu isOpen={isOpen} onClose={onClose} btnRef={btnRef} />
             </>
-          ) : 
-          <ButtonSquare onClick={singInWithGoogle}>Sing In</ButtonSquare>
-          }
+          ) : (
+            <ButtonSquare onClick={singInWithGoogle}>Sing In</ButtonSquare>
+          )}
         </Flex>
       </Box>
     </>

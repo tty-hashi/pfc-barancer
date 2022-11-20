@@ -35,3 +35,7 @@ export const userIdState = atom<string>({
   key: "userId",
   default: '',
 });
+export const cart = atom<string[]> ({
+  key: "cart",
+  default: [],
+})
