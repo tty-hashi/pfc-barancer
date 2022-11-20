@@ -31,7 +31,7 @@ export default function Home() {
       <TopFv />
       <LayoutContainer>
         <SlidebarGrid />
-        <CardGrid goodsList={goodsListState} />
+        <CardGrid isPageTop={true} goodsList={goodsListState} />
       </LayoutContainer>
       <BottomFixedCalorie />
     </>
