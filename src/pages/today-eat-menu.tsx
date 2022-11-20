@@ -8,8 +8,6 @@ import CardGrid from "../components/templates/CardGrid";
 import InputArea from "../components/molecules/InputArea";
 import ButtonSquare from "../components/atoms/buttons/ButtonSquare";
 import useCalculateInCart from "../hooks/useCalculateInCart";
-import { useRecoilValue } from "recoil";
-import { cart } from "../components/recoil/states";
 
 const TodayEatMenu = () => {
   const [protein, fat, carbo, calorie, cartGoodsDatail] = useCalculateInCart();
@@ -27,7 +25,7 @@ const TodayEatMenu = () => {
         </Text>
         <CardFooter initialFontSize={initialFontSize} initialWidth={initialWidth} gap={CardFooterGap} goodsCarbo={carbo} goodsFat={fat} goodsProtein={protein} />
       </Flex>
-      <CardGrid goodsList={cartGoodsDatail} />
+      <CardGrid isPageTop={false} goodsList={cartGoodsDatail} />
       <Box my={CardFooterGap}>
         <InputArea cartGoodsDatail={cartGoodsDatail} />
       </Box>

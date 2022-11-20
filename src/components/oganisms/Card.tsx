@@ -8,7 +8,7 @@ import { useRecoilValue } from "recoil";
 import { userIdState } from "../recoil/states";
 
 type Props = {
-  cercleOrangeButton: React.ReactNode;
+  cercleOrangeButton: any;
   goodsId: string;
   goodsUrl: string;
   goodsCarbo: string;
@@ -33,7 +33,7 @@ const Card: React.FC<Props> = (props) => {
           <Image src="/meat.svg" />
         </Box>
         {userId && (
-          <Box ml="auto" mr={0} mb={{ base: 4, md: 6 }} width="fit-content" >
+          <Box ml="auto" mr={0} mb={{ base: 4, md: 6 }} width="fit-content">
             {cercleOrangeButton}
           </Box>
         )}
