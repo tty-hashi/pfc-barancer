@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
+
 import CardMyPage from "../oganisms/CardMyPage";
-import { fetchMenus, filterAndCalculateMenus } from "../../hooks/useMenuFomat";
+import { fetchMenus, filterAndCalculateMenus, MyMenus } from "../../hooks/useMenuFomat";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { menusState, userIdState } from "../recoil/states";
 
@@ -25,14 +26,16 @@ const CardGridMyPage: React.FC<Props> = (props) => {
         console.log(`fetchMenus : ${e}`);
       });
   }, []);
-  const newMenus = filterAndCalculateMenus(menus, uid);
-  console.log(newMenus);
+  const myMenus: MyMenus[] = filterAndCalculateMenus(menus, uid);
+  console.log(myMenus);
 
   return (
     <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }} gap={{ base: 2, md: 6 }}>
-      <GridItem>
-        <CardMyPage cercleOrangeButtonLeft={cercleOrangeButtonLeft} cercleOrangeButtonRight={cercleOrangeButtonRight} />
-      </GridItem>
+      {myMenus.map((myMenu) => (
+        <GridItem>
+          <CardMyPage menuName={myMenu.menuName} titles={myMenu.goodsDatailName} protein={myMenu.protein} fat={myMenu.fat} carbo={myMenu.carbo} calorie={myMenu.calorie} cercleOrangeButtonLeft={cercleOrangeButtonLeft} cercleOrangeButtonRight={cercleOrangeButtonRight} />
+        </GridItem>
+      ))}
     </Grid>
   );
 };

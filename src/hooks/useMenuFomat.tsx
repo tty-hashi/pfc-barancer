@@ -12,6 +12,14 @@ export type Menus = {
   menuName: string;
   createAt: string;
 };
+export type MyMenus = {
+  menuName: string;
+  protein: number;
+  fat: number;
+  carbo: number;
+  calorie: number;
+  goodsDatailName: string[];
+};
 
 export const useMenuFomat = () => {
   return <div>useMenuFomat</div>;
@@ -42,33 +50,27 @@ export const fetchMenus: () => Promise<Menus[]> = async () => {
  * @param uid ログイン userId
  * @returns 成形したオブジェクトの配列
  */
-export const filterAndCalculateMenus = (
-  menus: Menus[],
-  uid: string
-): {
-  menuName: string;
-  protein: number;
-  fat: number;
-  carbo: number;
-  calorie: number;
-}[] => {
+export const filterAndCalculateMenus = (menus: Menus[], uid: string): MyMenus[] => {
   // ログインユーザー uid を元にの登録した献立を取得
-  const myMenus: Menus[] = menus.filter((menu) => menu.uid === uid);
+  const filterMyMenus: Menus[] = menus.filter((menu) => menu.uid === uid);
   // 献立の中を合算して配列に成形する
-  const aaa = myMenus.map((myMenu) => {
+  const myMenu: MyMenus[] = filterMyMenus.map((myMenu) => {
     let protein: number = 0;
     let fat: number = 0;
     let carbo: number = 0;
     let calorie: number = 0;
+    let goodsDatailName = [];
     const menuName: string = myMenu.menuName;
-    myMenu.menuDetail.forEach(({ goodsProtein, goodsFat, goodsCarbo, goodsCalorie }) => {
+    // 献立内の各栄養素を合算
+    myMenu.menuDetail.forEach(({ goodsProtein, goodsFat, goodsCarbo, goodsCalorie, goodsTitle }) => {
       const toNumberAndFloor = (item: string) => Math.floor(Number(item));
+      goodsDatailName.push(goodsTitle);
       protein += toNumberAndFloor(goodsProtein);
       fat += toNumberAndFloor(goodsFat);
       carbo += toNumberAndFloor(goodsCarbo);
       calorie += toNumberAndFloor(goodsCalorie);
     });
-    return { menuName, protein, fat, carbo, calorie };
+    return { menuName, protein, fat, carbo, calorie, goodsDatailName };
   });
-  return aaa;
+  return myMenu;
 };
