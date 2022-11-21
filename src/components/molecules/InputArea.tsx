@@ -16,7 +16,6 @@ const InputArea: React.FC<Props> = (props) => {
   const { cartGoodsDatail } = props;
   const [inputText, setInputText] = useState<string>("");
   const uid = useRecoilState(userIdState);
-  console.log(uid);
 
   const marginRight = { base: "0", md: "10" };
 
@@ -36,7 +35,7 @@ const InputArea: React.FC<Props> = (props) => {
         console.log(e);
       });
   };
-  const falsyChangeBoolean: boolean = inputText ? true : false;
+  const falsyChangeBoolean: boolean = inputText ? false : true;
 
   return (
     <Flex flexDirection={{ base: "column", md: "row" }} alignItems={{ base: "flex-end", md: "start" }}>
