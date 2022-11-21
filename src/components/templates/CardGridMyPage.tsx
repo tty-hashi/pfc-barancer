@@ -26,7 +26,7 @@ const CardGridMyPage: React.FC = () => {
     <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }} gap={{ base: 2, md: 6 }}>
       {myMenus.map((myMenu) => (
         <GridItem key={myMenu.id}>
-          <CardMyPage menuName={myMenu.menuName} titles={myMenu.goodsDatailName} protein={myMenu.protein} fat={myMenu.fat} carbo={myMenu.carbo} calorie={myMenu.calorie} id={myMenu.id} />
+          <CardMyPage menuName={myMenu.menuName} titles={myMenu.goodsDetailName} protein={myMenu.protein} fat={myMenu.fat} carbo={myMenu.carbo} calorie={myMenu.calorie} id={myMenu.id} goodsDetailId={myMenu.goodsDetailId} />
         </GridItem>
       ))}
     </Grid>

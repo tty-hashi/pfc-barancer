@@ -10,6 +10,7 @@ import { db } from "../../firebaseSettings/firebase";
 import { fetchMenus } from "../../hooks/useMenuFomat";
 import { useSetRecoilState } from "recoil";
 import { menusState } from "../recoil/states";
+import ButtonCercleOrangeEditting from "../atoms/buttons/ButtonCercleOrangeEditting";
 
 type Props = {
   menuName: string;
@@ -19,10 +20,11 @@ type Props = {
   calorie: number;
   titles: string[];
   id: string;
+  goodsDetailId: string[];
 };
 
 const CardMyPage: React.FC<Props> = (props) => {
-  const { menuName, protein, fat, carbo, calorie, titles, id } = props;
+  const { menuName, protein, fat, carbo, calorie, titles, id, goodsDetailId } = props;
   const setMenus = useSetRecoilState(menusState);
 
   /**
@@ -67,7 +69,7 @@ const CardMyPage: React.FC<Props> = (props) => {
               icon={faTrash}
             />
           </Box>
-          {/* {cercleOrangeButtonRight} */}
+          <ButtonCercleOrangeEditting goodsDetailId={goodsDetailId} menuName={menuName} />
         </Box>
       </Box>
       <Box>
