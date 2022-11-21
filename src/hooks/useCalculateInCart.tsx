@@ -20,7 +20,7 @@ const useCalculateInCart = (): Nun => {
   // let cartGoodsDatail;
 
   useEffect(() => {
-    // goodsListStateからカート内の商品とgoodsIdが同じものを取得して配列に入れる
+    // goodsListStateからカート内(idのみ保持)の商品とgoodsIdが同じものを取得して配列に入れる
     const getDatailInCart = cartState.map((cartItemId) => {
       return goodsListState.filter((item) => item.id === cartItemId);
     });

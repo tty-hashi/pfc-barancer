@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { Menus } from "../../hooks/useMenuFomat";
 export type GoodsList = {
   id: string;
   goodsUrl: string;
@@ -8,7 +9,7 @@ export type GoodsList = {
   goodsCalorie: string;
   goodsValue: string;
   goodsTitle: string;
-  goodsAllData:string;
+  goodsAllData: string;
 };
 
 export const goodsList = atom<GoodsList[]>({
@@ -33,9 +34,13 @@ export const silderValueCarbo = atom<number>({
 });
 export const userIdState = atom<string>({
   key: "userId",
-  default: '',
+  default: "",
 });
-export const cart = atom<string[]> ({
+export const cart = atom<string[]>({
   key: "cart",
   default: [],
-})
+});
+export const menusState = atom<Menus[]>({
+  key: "menus",
+  default: [],
+});

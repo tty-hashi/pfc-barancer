@@ -2,8 +2,7 @@ import React from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 
 import Card from "../oganisms/Card";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { cart, GoodsList } from "../recoil/states";
+import { GoodsList } from "../recoil/states";
 import ButtonCercleOrangeCart from "../atoms/buttons/ButtonCercleOrangeCart";
 import ButtonCercleOrangeTrash from "../atoms/buttons/ButtonCercleOrangeTrash";
 
