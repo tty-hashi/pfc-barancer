@@ -49,6 +49,9 @@ const CardMyPage: React.FC<Props> = (props) => {
         console.log(e);
       });
   };
+  // urlのパスを取得して、削除ボタンの DOM の出し分けに使用
+  const urlPathName = location.pathname;
+
   return (
     <Box bg="#eee" py={{ base: 2, md: 4 }} px={2}>
       <Box>
@@ -61,14 +64,16 @@ const CardMyPage: React.FC<Props> = (props) => {
           </Box>
         ))}
         <Box ml="auto" mr={0} mb={{ base: 4, md: 6 }} width="fit-content" display="flex">
-          <Box mr={4}>
-            <ButtonCercleOrange
-              onClick={() => {
-                goodsDeleteInMyMenu(id, menuName);
-              }}
-              icon={faTrash}
-            />
-          </Box>
+          {urlPathName === "/my-page" && (
+            <Box mr={4}>
+              <ButtonCercleOrange
+                onClick={() => {
+                  goodsDeleteInMyMenu(id, menuName);
+                }}
+                icon={faTrash}
+              />
+            </Box>
+          )}
           <ButtonCercleOrangeEditting goodsDetailId={goodsDetailId} menuName={menuName} />
         </Box>
       </Box>

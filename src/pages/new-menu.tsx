@@ -11,12 +11,7 @@ import ButtonHeart from "../components/atoms/buttons/ButtonHeart";
 const NewMenu = () => {
   return (
     <PageLayout heading="New Menu" icon={faUtensils}>
-      <Box>
-        <SlidebarGrid />
-      </Box>
-      <Box>
-        <CardGridMyPage cercleOrangeButtonLeft={<ButtonGoodThumb />} cercleOrangeButtonRight={<ButtonHeart />} />
-      </Box>
+      <CardGridMyPage />
     </PageLayout>
   );
 };

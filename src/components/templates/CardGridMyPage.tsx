@@ -6,8 +6,12 @@ import { fetchMenus, filterAndCalculateMenus, MyMenus } from "../../hooks/useMen
 import { useRecoilState, useRecoilValue } from "recoil";
 import { menusState, userIdState } from "../recoil/states";
 
-const CardGridMyPage: React.FC = () => {
-  const uid = useRecoilValue(userIdState);
+type Props = {
+  uid?: string;
+};
+
+const CardGridMyPage: React.FC<Props> = (props) => {
+  const { uid } = props;
   const [menus, setMenus] = useRecoilState(menusState);
 
   useEffect(() => {

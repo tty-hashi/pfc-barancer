@@ -48,13 +48,18 @@ export const fetchMenus: () => Promise<Menus[]> = async () => {
 };
 /**
  * ログインユーザー uid を元にの登録した献立を取得して、menuName及び、PFCとカロリーの合算した値を成形して返す。
- * @param menus firebase から取得した menu の配列
+ * @param menus firebase から取得したユーザーが作成した menu の配列
  * @param uid ログイン userId
  * @returns 成形したオブジェクトの配列
  */
-export const filterAndCalculateMenus = (menus: Menus[], uid: string): MyMenus[] => {
+export const filterAndCalculateMenus = (menus: Menus[], uid?: string): MyMenus[] => {
+  let filterMyMenus: Menus[];
   // ログインユーザー uid を元にの登録した献立を取得
-  const filterMyMenus: Menus[] = menus.filter((menu) => menu.uid === uid);
+  if (uid) {
+    filterMyMenus = menus.filter((menu) => menu.uid === uid);
+  } else {
+    filterMyMenus = menus;
+  }
   // 献立の中を合算して配列に成形する
   const myMenu: MyMenus[] = filterMyMenus.map((myMenu) => {
     let protein: number = 0;
