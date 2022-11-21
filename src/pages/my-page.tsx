@@ -9,7 +9,7 @@ import ButtonCercleOrangeTrash from "../components/atoms/buttons/ButtonCercleOra
 
 const Mypage = () => {
   return (
-    <PageLayout heading="Today Menu" icon={faUser}>
+    <PageLayout heading="My Page" icon={faUser}>
       <Box my="20">
         <CardGridMyPage cercleOrangeButtonLeft={<ButtonCercleOrangeEditting />} cercleOrangeButtonRight={<ButtonCercleOrangeTrash />} />
       </Box>
