@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { faBurger } from "@fortawesome/free-solid-svg-icons";
 
@@ -11,11 +12,15 @@ import useCalculateInCart from "../hooks/useCalculateInCart";
 
 const TodayEatMenu = () => {
   const [protein, fat, carbo, calorie, cartGoodsDatail] = useCalculateInCart();
-
+  const router = useRouter();
   // chakra レスポンシブ設定
   const initialFontSize = { base: "lg", md: "xl" };
   const initialWidth = { base: "24px", md: "30px" };
   const CardFooterGap = { base: "6", md: "10" };
+
+  const onClickGoToHome = () => {
+    router.push("/");
+  };
 
   return (
     <PageLayout heading="Today Eat Menu" icon={faBurger}>
@@ -30,7 +35,7 @@ const TodayEatMenu = () => {
         <InputArea cartGoodsDatail={cartGoodsDatail} />
       </Box>
       <Box ml="auto" mr="0" w="fit-content">
-        <ButtonSquare>戻る</ButtonSquare>
+        <ButtonSquare onClick={onClickGoToHome}>戻る</ButtonSquare>
       </Box>
     </PageLayout>
   );
