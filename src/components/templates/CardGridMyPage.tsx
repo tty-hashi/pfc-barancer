@@ -6,13 +6,7 @@ import { fetchMenus, filterAndCalculateMenus, MyMenus } from "../../hooks/useMen
 import { useRecoilState, useRecoilValue } from "recoil";
 import { menusState, userIdState } from "../recoil/states";
 
-type Props = {
-  cercleOrangeButtonLeft: React.ReactNode;
-  cercleOrangeButtonRight: React.ReactNode;
-};
-
-const CardGridMyPage: React.FC<Props> = (props) => {
-  const { cercleOrangeButtonLeft, cercleOrangeButtonRight } = props;
+const CardGridMyPage: React.FC = () => {
   const uid = useRecoilValue(userIdState);
   const [menus, setMenus] = useRecoilState(menusState);
 
@@ -27,13 +21,12 @@ const CardGridMyPage: React.FC<Props> = (props) => {
       });
   }, []);
   const myMenus: MyMenus[] = filterAndCalculateMenus(menus, uid);
-  console.log(myMenus);
 
   return (
     <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }} gap={{ base: 2, md: 6 }}>
       {myMenus.map((myMenu) => (
-        <GridItem>
-          <CardMyPage menuName={myMenu.menuName} titles={myMenu.goodsDatailName} protein={myMenu.protein} fat={myMenu.fat} carbo={myMenu.carbo} calorie={myMenu.calorie} cercleOrangeButtonLeft={cercleOrangeButtonLeft} cercleOrangeButtonRight={cercleOrangeButtonRight} />
+        <GridItem key={myMenu.id}>
+          <CardMyPage menuName={myMenu.menuName} titles={myMenu.goodsDatailName} protein={myMenu.protein} fat={myMenu.fat} carbo={myMenu.carbo} calorie={myMenu.calorie} id={myMenu.id} />
         </GridItem>
       ))}
     </Grid>

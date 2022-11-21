@@ -19,6 +19,7 @@ export type MyMenus = {
   carbo: number;
   calorie: number;
   goodsDatailName: string[];
+  id: string;
 };
 
 export const useMenuFomat = () => {
@@ -61,6 +62,7 @@ export const filterAndCalculateMenus = (menus: Menus[], uid: string): MyMenus[] 
     let calorie: number = 0;
     let goodsDatailName = [];
     const menuName: string = myMenu.menuName;
+    const id: string = myMenu.id;
     // 献立内の各栄養素を合算
     myMenu.menuDetail.forEach(({ goodsProtein, goodsFat, goodsCarbo, goodsCalorie, goodsTitle }) => {
       const toNumberAndFloor = (item: string) => Math.floor(Number(item));
@@ -70,7 +72,7 @@ export const filterAndCalculateMenus = (menus: Menus[], uid: string): MyMenus[] 
       carbo += toNumberAndFloor(goodsCarbo);
       calorie += toNumberAndFloor(goodsCalorie);
     });
-    return { menuName, protein, fat, carbo, calorie, goodsDatailName };
+    return { menuName, protein, fat, carbo, calorie, goodsDatailName, id };
   });
   return myMenu;
 };
