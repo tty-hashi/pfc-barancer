@@ -18,7 +18,8 @@ export type MyMenus = {
   fat: number;
   carbo: number;
   calorie: number;
-  goodsDatailName: string[];
+  goodsDetailName: string[];
+  goodsDetailId: string[];
   id: string;
 };
 
@@ -60,19 +61,21 @@ export const filterAndCalculateMenus = (menus: Menus[], uid: string): MyMenus[] 
     let fat: number = 0;
     let carbo: number = 0;
     let calorie: number = 0;
-    let goodsDatailName = [];
+    let goodsDetailName: string[] = [];
+    let goodsDetailId: string[] = [];
     const menuName: string = myMenu.menuName;
     const id: string = myMenu.id;
     // 献立内の各栄養素を合算
-    myMenu.menuDetail.forEach(({ goodsProtein, goodsFat, goodsCarbo, goodsCalorie, goodsTitle }) => {
+    myMenu.menuDetail.forEach(({ goodsProtein, goodsFat, goodsCarbo, goodsCalorie, goodsTitle, id }) => {
       const toNumberAndFloor = (item: string) => Math.floor(Number(item));
-      goodsDatailName.push(goodsTitle);
+      goodsDetailName.push(goodsTitle);
+      goodsDetailId.push(id);
       protein += toNumberAndFloor(goodsProtein);
       fat += toNumberAndFloor(goodsFat);
       carbo += toNumberAndFloor(goodsCarbo);
       calorie += toNumberAndFloor(goodsCalorie);
     });
-    return { menuName, protein, fat, carbo, calorie, goodsDatailName, id };
+    return { menuName, protein, fat, carbo, calorie, goodsDetailName, id, goodsDetailId };
   });
   return myMenu;
 };
