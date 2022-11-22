@@ -27,17 +27,15 @@ const Card: React.FC<Props> = (props) => {
 
   return (
     <Box bg="#eee" py={{ base: 2, md: 4 }} h="100%" px={2}>
-      <Box>
-        <CardHead goodsTitle={goodsTitle} goodsCalorie={goodsCalorie} />
-        <Box maxW="60%" mx="auto" my={{ base: 4, md: 6 }} onClick={onOpen}>
-          <Image src="/meat.svg" />
-        </Box>
-        {userId && (
-          <Box ml="auto" mr={0} mb={{ base: 4, md: 6 }} width="fit-content">
-            {cercleOrangeButton}
-          </Box>
-        )}
+      <CardHead goodsTitle={goodsTitle} goodsCalorie={goodsCalorie} />
+      <Box maxW="60%" mx="auto" my={{ base: 4, md: 6 }} onClick={onOpen}>
+        <Image src="/meat.svg" />
       </Box>
+      {userId && (
+        <Box ml="auto" mr={0} mb={{ base: 4, md: 6 }} width="fit-content">
+          {cercleOrangeButton}
+        </Box>
+      )}
       <Box>
         <CardFooter goodsCarbo={goodsCarbo} goodsFat={goodsFat} goodsProtein={goodsProtein} />
       </Box>
