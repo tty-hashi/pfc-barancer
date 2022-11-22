@@ -15,3 +15,6 @@ a {
 * {
   box-sizing: border-box;
 }
+.chakra-modal__close-btn path {
+  fill: #fff;
+}

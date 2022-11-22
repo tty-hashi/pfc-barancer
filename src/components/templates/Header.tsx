@@ -10,9 +10,12 @@ import { userIdState } from "../recoil/states";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, singInWithGoogle } from "../../firebaseSettings/firebase";
 import DrawerMenu from "../atoms/DrawerMenu";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const [userId, setUserId] = useRecoilState(userIdState);
+  const router = useRouter();
+
   // userの変更をfirebasehooksで検知してstateを書き換え
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -22,12 +25,15 @@ const Header = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
+  const onClickGoToHome = () => {
+    router.push("/");
+  };
 
   return (
     <>
       <Box bg="brand.main">
         <Flex alignItems="center" h={{ base: 16, md: 24 }} maxW={1200} mx={"auto"} px={4}>
-          <Heading as="h1" fontSize={{ base: "20px", md: "40px" }} color="#fff" letterSpacing="0.08em">
+          <Heading onClick={onClickGoToHome} _hover={{ cursor: "pointer" }} as="h1" fontSize={{ base: "20px", md: "40px" }} color="#fff" letterSpacing="0.08em">
             PFC BRANCER
           </Heading>
           <Spacer />
