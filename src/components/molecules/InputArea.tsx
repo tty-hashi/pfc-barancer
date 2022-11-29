@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Box, Button, Flex, useDisclosure } from "@chakra-ui/react";
+import { AlertDialog, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Box, Flex, useDisclosure } from "@chakra-ui/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import { db } from "../../firebaseSettings/firebase";
 import { cart, GoodsList, userIdState } from "../recoil/states";
@@ -16,7 +16,7 @@ type Props = {
 const InputArea: React.FC<Props> = (props) => {
   const { cartGoodsDatail } = props;
   const [inputText, setInputText] = useState<string>("");
-  const setGoodsinCart = useSetRecoilState(cart);
+  const [cartInGoods, setCartInGoods] = useRecoilState(cart);
   const uid = useRecoilValue(userIdState);
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,7 +43,7 @@ const InputArea: React.FC<Props> = (props) => {
   const onClickAlertInButton: () => void = () => {
     router.push("/my-page/");
     setInputText("");
-    setGoodsinCart([]);
+    setCartInGoods([]);
   };
 
   return (
@@ -53,7 +53,7 @@ const InputArea: React.FC<Props> = (props) => {
       </Box>
       <Box>
         <ButtonSquare
-          disabled={inputText ? false : true}
+          disabled={inputText && cartInGoods.length !== 0 ? false : true}
           onClick={() => {
             firebaseAddCollection(uid);
           }}
