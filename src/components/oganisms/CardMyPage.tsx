@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { AlertDialog, Box, Text, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, Button, useDisclosure } from "@chakra-ui/react";
 
 import CardHead from "../molecules/CardHead";
 import CardFooter from "../molecules/CardFooter";
@@ -26,14 +26,15 @@ type Props = {
 const CardMyPage: React.FC<Props> = (props) => {
   const { menuName, protein, fat, carbo, calorie, titles, id, goodsDetailId } = props;
   const setMenus = useSetRecoilState(menusState);
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = React.useRef();
 
   /**
    * firebase からデータを削除して、再fetch
    * @param {string} id ドキュメントid
-   * @param {string} menuName reject時の処理に使用
    */
-  const goodsDeleteInMyMenu = async (id: string, menuName: string) => {
-    if (!confirm(`${menuName}を削除しますがよろしいですか？`)) return;
+  const goodsDeleteInMyMenu = async (id: string) => {
+    // if (!confirm(`${menuName}を削除しますがよろしいですか？`)) return;
     await deleteDoc(doc(db, "menus", id))
       .then(() => {
         fetchMenus()
@@ -48,6 +49,7 @@ const CardMyPage: React.FC<Props> = (props) => {
       .catch((e) => {
         console.log(e);
       });
+    onClose();
   };
   // urlのパスを取得して、削除ボタンの DOM の出し分けに使用
   const urlPathName = location.pathname;
@@ -67,12 +69,30 @@ const CardMyPage: React.FC<Props> = (props) => {
       <Box ml="auto" mr={0} mb={{ base: 4, md: 6 }} width="fit-content" display="flex">
         {urlPathName === "/my-page" && (
           <Box mr={4}>
-            <ButtonCercleOrange
-              onClick={() => {
-                goodsDeleteInMyMenu(id, menuName);
-              }}
-              icon={faTrash}
-            />
+            <ButtonCercleOrange onClick={onOpen} icon={faTrash} />
+            <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
+              <AlertDialogOverlay>
+                <AlertDialogContent>
+                  <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                    {menuName}を削除しますがよろしいですか？
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <Button ref={cancelRef} onClick={onClose}>
+                      Cancel
+                    </Button>
+                    <Button
+                      colorScheme="red"
+                      onClick={() => {
+                        goodsDeleteInMyMenu(id);
+                      }}
+                      ml={3}
+                    >
+                      Delete
+                    </Button>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialogOverlay>
+            </AlertDialog>
           </Box>
         )}
         <ButtonCercleOrangeEditting goodsDetailId={goodsDetailId} menuName={menuName} />
