@@ -5,7 +5,7 @@ import React from "react";
 
 type Props = {
   icon: IconDefinition;
-  onClick: any;
+  onClick: () => void;
 };
 
 const ButtonCercleOrange: React.FC<Props> = (props) => {

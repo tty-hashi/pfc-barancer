@@ -9,7 +9,7 @@ import SlideBarGroup from "../oganisms/SlideBarGroup";
 const SlidebarGrid = () => {
   return (
     <LayoutContainer>
-      <Grid templateColumns="repeat(3,1fr)" gap={6} my={{ base: 8, md: 12 }}>
+      <Grid templateColumns={{ base: "repeat(1,1fr)", md: "repeat(3,1fr)" }} gap={6} my={{ base: 8, md: 12 }}>
         <GridItem>
           <SlideBarGroup cercleInnerText="P" title="タンパク質" slideBar={<SlideBarProtein />} />
         </GridItem>

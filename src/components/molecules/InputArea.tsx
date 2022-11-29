@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Box, Flex } from "@chakra-ui/react";
+import { AlertDialog, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Box, Flex, useDisclosure } from "@chakra-ui/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import { db } from "../../firebaseSettings/firebase";
 import { cart, GoodsList, userIdState } from "../recoil/states";
@@ -16,31 +16,35 @@ type Props = {
 const InputArea: React.FC<Props> = (props) => {
   const { cartGoodsDatail } = props;
   const [inputText, setInputText] = useState<string>("");
-  const setGoodsinCart = useSetRecoilState(cart);
-  const uid = useRecoilState(userIdState);
+  const [cartInGoods, setCartInGoods] = useRecoilState(cart);
+  const uid = useRecoilValue(userIdState);
   const router = useRouter();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = React.useRef();
 
   const marginRight = { base: "0", md: "10" };
 
-  const firebaseAddCollection = async (uid: any[]) => {
+  const firebaseAddCollection = async (uid: string) => {
     await addDoc(collection(db, "menus"), {
       menuName: inputText,
       menuDetail: cartGoodsDatail,
       createdAt: serverTimestamp(),
-      uid: uid[0],
+      uid: uid,
     })
       .then(() => {
-        alert("マイリストに登録しました");
-        setInputText("");
+        onOpen();
       })
       .catch((e) => {
         alert("送信に失敗しました");
         console.log(e);
       });
-    router.push("/my-page/");
-    setGoodsinCart([]);
   };
-  const falsyChangeBoolean: boolean = inputText ? false : true;
+  // menu を firebase に追加後、ダイアログを出してその中のボタンクリック時の処理
+  const onClickAlertInButton: () => void = () => {
+    router.push("/my-page/");
+    setInputText("");
+    setCartInGoods([]);
+  };
 
   return (
     <Flex flexDirection={{ base: "column", md: "row" }} alignItems={{ base: "flex-end", md: "start" }}>
@@ -49,7 +53,7 @@ const InputArea: React.FC<Props> = (props) => {
       </Box>
       <Box>
         <ButtonSquare
-          disabled={falsyChangeBoolean}
+          disabled={inputText && cartInGoods.length !== 0 ? false : true}
           onClick={() => {
             firebaseAddCollection(uid);
           }}
@@ -57,6 +61,18 @@ const InputArea: React.FC<Props> = (props) => {
           マイリストに追加
         </ButtonSquare>
       </Box>
+      <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              マイリストにMenuを追加しました
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <ButtonSquare onClick={onClickAlertInButton}>OK</ButtonSquare>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
     </Flex>
   );
 };

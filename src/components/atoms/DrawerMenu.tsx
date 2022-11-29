@@ -1,8 +1,12 @@
 import React from "react";
-import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure, Button, Input, UnorderedList, ListItem } from "@chakra-ui/react";
+import Link from "next/link";
+import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, UnorderedList, ListItem, Box } from "@chakra-ui/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faDove, faFeather, faUser } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+
 import ButtonSquare from "./buttons/ButtonSquare";
 import { logOut } from "../../firebaseSettings/firebase";
-import Link from "next/link";
 
 type Props = {
   isOpen: boolean;
@@ -10,23 +14,41 @@ type Props = {
   btnRef: React.MutableRefObject<undefined>;
 };
 
+type NavList = {
+  link: string;
+  renderText: string;
+  icon: IconProp;
+};
 const DrawerMenu: React.FC<Props> = (props) => {
   const { isOpen, onClose, btnRef } = props;
-
+  const navList: NavList[] = [
+    { link: "/", renderText: "トップ", icon: faDove },
+    { link: "/my-page", renderText: "マイページ", icon: faUser },
+    { link: "/today-eat-menu", renderText: "カート", icon: faCartShopping },
+    { link: "/new-menu", renderText: "新着メニュー", icon: faFeather },
+    // { link: "/popular-menu", renderText: "人気のメニュー" },
+  ];
   return (
     <>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent bg="brand.main">
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerHeader pt={{ base: "12", md: "14" }} fontSize={{ base: "2xl", md: "3xl" }} fontFamily="Montserrat" color="#fff">
+            PFC BRANCER
+          </DrawerHeader>
           <DrawerBody>
-            <UnorderedList>
-              <ListItem><Link href='/'>トップ</Link></ListItem>
-              <ListItem><Link href='/my-page'>マイページ</Link></ListItem>
-              <ListItem><Link href='/today-eat-menu'>カート</Link></ListItem>
-              <ListItem><Link href='/new-menu'>新着メニュー</Link></ListItem>
-              <ListItem><Link href='/popular-menu'>人気のメニュー</Link></ListItem>
+            <UnorderedList listStyleType="none">
+              {navList.map(({ link, renderText, icon }) => (
+                <ListItem key={link} color="#fff" fontWeight="700" fontSize={{ base: "xl", md: "2xl" }}>
+                  <Link href={link} style={{ padding: "10px 0", display: "flex", alignItems: "center" }}>
+                    <Box w={{ base: "6" }} mr={{ base: 4, md: 2 }}>
+                      <FontAwesomeIcon icon={icon} />
+                    </Box>
+                    {renderText}
+                  </Link>
+                </ListItem>
+              ))}
             </UnorderedList>
           </DrawerBody>
           <DrawerFooter>
