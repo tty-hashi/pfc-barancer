@@ -16,6 +16,7 @@ export default function Home() {
   const [goodsListState, setGoodsListState] = useRecoilState(goodsList);
   const setGoodsListSourceState = useSetRecoilState(goodsListSource);
   const [slidebarShowTriggerState, setSlidebarShowTriggerState] = useState<boolean>(true);
+  const [bottomFixedCalorieHandler, setBottomFixedCalorieHandler] = useState<boolean>(false);
   // firebase からデータと fetch して state へ保持
   useEffect(() => {
     goodsFetch().then((result) => {
@@ -27,6 +28,18 @@ export default function Home() {
   const slidebarShowTrigger = () => {
     setSlidebarShowTriggerState(false);
   };
+  // 最下部のカロリー計算をスクロールしたら出す
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      const fade = window.pageYOffset;
+      if (fade > 500) {
+        setBottomFixedCalorieHandler(true);
+      } else {
+        setBottomFixedCalorieHandler(false);
+      }
+    });
+  }, []);
+
   return (
     <>
       <Header />
@@ -42,7 +55,7 @@ export default function Home() {
           <CardGrid isPageTop={true} goodsList={goodsListState} />
         </Box>
       </LayoutContainer>
-      <BottomFixedCalorie />
+      {bottomFixedCalorieHandler && <BottomFixedCalorie />}
     </>
   );
 }
