@@ -1,6 +1,5 @@
-import React from "react";
-import { useSetRecoilState } from "recoil";
 import { collection, getDocs, query } from "firebase/firestore";
+import { useEffect, useState } from "react";
 
 import { GoodsList } from "../components/recoil/states";
 import { db } from "../firebaseSettings/firebase";
@@ -53,15 +52,23 @@ export const fetchMenus: () => Promise<Menus[]> = async () => {
  * @return myMenu 成形したオブジェクトの配列
  */
 export const filterAndCalculateMenus = (menus: Menus[], uid?: string): MyMenus[] => {
-  let filterMyMenus: Menus[];
+  // let filterMyMenus: Menus[];
+  const [filterMyMenus, setFilterMyMenus] = useState<Menus[]>([]);
   // ログインユーザー uid を元にの登録した献立を取得
-  if (uid) {
-    filterMyMenus = menus.filter((menu) => menu.uid === uid);
-  } else {
-    filterMyMenus = menus;
-  }
+  useEffect(() => {
+    if (uid) {
+      setFilterMyMenus(menus.filter((menu) => menu.uid === uid));
+    } else {
+      setFilterMyMenus(menus);
+    }
+  }, [uid, menus]);
   // 献立の中を合算して配列に成形する
   const myMenu: MyMenus[] = filterMyMenus.map((myMenu) => {
+    // const [protein, setProtein] = useState<number>(0);
+    // const [fat, setFat] = useState<number>(0);
+    // const [carbo, setCarbo] = useState<number>(0);
+    // const [calorie, setCalorie] = useState<number>(0);
+
     let protein: number = 0;
     let fat: number = 0;
     let carbo: number = 0;
@@ -72,13 +79,17 @@ export const filterAndCalculateMenus = (menus: Menus[], uid?: string): MyMenus[]
     const id: string = myMenu.id;
     // 献立内の各栄養素を合算
     myMenu.menuDetail.forEach(({ goodsProtein, goodsFat, goodsCarbo, goodsCalorie, goodsTitle, id }) => {
-      const toNumberAndFloor = (item: string) => Math.floor(Number(item));
+      const toNumber = (item: string) => Number(item);
       goodsDetailName.push(goodsTitle);
       goodsDetailId.push(id);
-      protein += toNumberAndFloor(goodsProtein);
-      fat += toNumberAndFloor(goodsFat);
-      carbo += toNumberAndFloor(goodsCarbo);
-      calorie += toNumberAndFloor(goodsCalorie);
+      // setProtein((prev) => prev + toNumber(goodsProtein));
+      // setFat((prev) => prev + toNumber(goodsFat));
+      // setCarbo((prev) => prev + toNumber(goodsCarbo));
+      // setCalorie((prev) => prev + toNumber(goodsCalorie));
+      protein += toNumber(goodsProtein);
+      fat += toNumber(goodsFat);
+      carbo += toNumber(goodsCarbo);
+      calorie += toNumber(goodsCalorie);
     });
     return { menuName, protein, fat, carbo, calorie, goodsDetailName, id, goodsDetailId };
   });
