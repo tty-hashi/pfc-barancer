@@ -10,6 +10,7 @@ export type GoodsList = {
   goodsValue: string;
   goodsTitle: string;
   goodsAllData: string;
+  goodsCategory: string;
 };
 
 export const goodsList = atom<GoodsList[]>({
