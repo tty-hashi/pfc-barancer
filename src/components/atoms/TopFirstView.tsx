@@ -8,7 +8,7 @@ import ButtonSquare from "./buttons/ButtonSquare";
 const TopFirstView = () => {
   const userId = useRecoilValue(userIdState);
   return (
-    <Box bgImage="url('/top-fv.png')" bgPosition="center bottom" bgRepeat="no-repeat" bgSize="cover" h={{ base: 350, md: 750 }}>
+    <Box bgImage="url('/top-fv.png')" bgPosition="center bottom" bgRepeat="no-repeat" bgSize="cover" h={{ base: 450, md: 850 }} pt={{ base: "76px", md: "106px" }}>
       <Box height={"100%"} maxW={"1200px"} mx={"auto"} position="relative">
         <Box position="absolute" top={"50%"} transform="translateY(-55%)" right={"20px"}>
           <Heading as="h2" fontSize={{ base: "4xl", md: "8xl" }} color="#fff" textAlign={"right"}>
@@ -16,11 +16,11 @@ const TopFirstView = () => {
             <br /> health & <br />
             good body
           </Heading>
-          {!userId &&
-          <Box w="fit-content" ml={"auto"} mr={0} mt={8} h="auto">
-            <ButtonSquare onClick={singInWithGoogle}>Sing in</ButtonSquare>
-          </Box>
-          }
+          {!userId && (
+            <Box w="fit-content" ml={"auto"} mr={0} mt={8} h="auto">
+              <ButtonSquare onClick={singInWithGoogle}>Sing in</ButtonSquare>
+            </Box>
+          )}
         </Box>
       </Box>
     </Box>

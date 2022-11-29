@@ -34,13 +34,13 @@ const DrawerMenu: React.FC<Props> = (props) => {
         <DrawerOverlay />
         <DrawerContent bg="brand.main">
           <DrawerCloseButton />
-          <DrawerHeader pt={{ base: "8", md: "10" }} fontSize={{ base: "2xl", md: "3xl" }} fontFamily="Montserrat" color="#fff">
+          <DrawerHeader pt={{ base: "12", md: "14" }} fontSize={{ base: "2xl", md: "3xl" }} fontFamily="Montserrat" color="#fff">
             PFC BRANCER
           </DrawerHeader>
           <DrawerBody>
             <UnorderedList listStyleType="none">
               {navList.map(({ link, renderText, icon }) => (
-                <ListItem color="#fff" fontWeight="700" fontSize={{ base: "xl", md: "2xl" }}>
+                <ListItem key={link} color="#fff" fontWeight="700" fontSize={{ base: "xl", md: "2xl" }}>
                   <Link href={link} style={{ padding: "10px 0", display: "flex", alignItems: "center" }}>
                     <Box w={{ base: "6" }} mr={{ base: 4, md: 2 }}>
                       <FontAwesomeIcon icon={icon} />

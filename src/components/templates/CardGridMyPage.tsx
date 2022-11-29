@@ -27,9 +27,9 @@ const CardGridMyPage: React.FC<Props> = (props) => {
   const myMenus: MyMenus[] = filterAndCalculateMenus(menus, uid);
 
   return (
-    <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }} gap={{ base: 2, md: 6 }}>
+    <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }} gap={{ base: 2, md: 6 }} py={{ base: "8", md: "12" }}>
       {myMenus.map((myMenu) => (
-        <GridItem key={myMenu.id}>
+        <GridItem key={myMenu.id} >
           <CardMyPage menuName={myMenu.menuName} titles={myMenu.goodsDetailName} protein={myMenu.protein} fat={myMenu.fat} carbo={myMenu.carbo} calorie={myMenu.calorie} id={myMenu.id} goodsDetailId={myMenu.goodsDetailId} />
         </GridItem>
       ))}

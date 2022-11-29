@@ -15,6 +15,12 @@ a {
 * {
   box-sizing: border-box;
 }
+.chakra-modal__close-btn {
+  font-size: 25px !important;
+}
 .chakra-modal__close-btn path {
   fill: #fff;
+}
+.svg-inline--fa {
+  height: auto;
 }

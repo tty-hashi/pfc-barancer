@@ -31,7 +31,7 @@ const Header = () => {
 
   return (
     <>
-      <Box bg="brand.main">
+      <Box bg="brand.main" position="fixed" w="100%" zIndex="sticky">
         <Flex alignItems="center" h={{ base: 16, md: 24 }} maxW={1200} mx={"auto"} px={4}>
           <Heading onClick={onClickGoToHome} _hover={{ cursor: "pointer" }} as="h1" fontSize={{ base: "20px", md: "40px" }} color="#fff" letterSpacing="0.08em">
             PFC BRANCER

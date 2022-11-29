@@ -53,15 +53,17 @@ const CardMyPage: React.FC<Props> = (props) => {
   const urlPathName = location.pathname;
 
   return (
-    <Box bg="#eee" py={{ base: 2, md: 4 }} px={2}>
+    <Box bg="#eee" py={{ base: 2, md: 4 }} px={2} h="100%">
       <CardHead goodsCalorie={calorie.toString()} goodsTitle={menuName} />
-      {titles.map((title, index) => (
-        <Box mx="4" my={{ base: 4, md: 6 }} key={`${title}${index}`}>
-          <Text fontSize="md" mb="4" overflow="hidden" sx={{ display: "-webkit-box", WebkitBoxOrient: "vertical", WebkitLineClamp: "2" }}>
-            {title}
-          </Text>
-        </Box>
-      ))}
+      <Box h="264px" overflowY="scroll" mb={{ base: 4, md: 6 }}>
+        {titles.map((title, index) => (
+          <Box mx="4" key={`${title}${index}`}>
+            <Text fontSize="md" mb="4" overflow="hidden" sx={{ display: "-webkit-box", WebkitBoxOrient: "vertical", WebkitLineClamp: "2" }}>
+              {title}
+            </Text>
+          </Box>
+        ))}
+      </Box>
       <Box ml="auto" mr={0} mb={{ base: 4, md: 6 }} width="fit-content" display="flex">
         {urlPathName === "/my-page" && (
           <Box mr={4}>

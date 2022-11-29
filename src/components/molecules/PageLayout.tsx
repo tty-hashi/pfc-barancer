@@ -19,7 +19,7 @@ const PageLayout: React.FC<Props> = (props) => {
     <>
       <Header />
       <Box bg="brand.bg">
-        <Flex alignItems="center" maxW="1200" p={6} mx="auto">
+        <Flex alignItems="center" maxW="1200" p={6} mx="auto" pt={{ base: "75px", md: "106px" }}>
           <Heading as="h2" fontSize={fontSize} color="#fff">
             {heading}
           </Heading>
