@@ -7,9 +7,7 @@ import SlideBar from "../components/atoms/slideBar/SlideBar";
 const PopularMenu = () => {
   return (
     <PageLayout heading="Popular Menu" icon={faThumbsUp}>
-      <Box>
-        <SlideBar />
-      </Box>
+      <Box>{/* <SlideBar /> */}</Box>
       <Box></Box>
     </PageLayout>
   );
