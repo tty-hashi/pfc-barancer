@@ -1,5 +1,5 @@
 import React from "react";
-import { AlertDialog, Box, Text, AlertDialogBody, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, Button, useDisclosure } from "@chakra-ui/react";
+import { AlertDialog, Box, Text, AlertDialogFooter, AlertDialogHeader, AlertDialogContent, AlertDialogOverlay, Button, useDisclosure } from "@chakra-ui/react";
 
 import CardHead from "../molecules/CardHead";
 import CardFooter from "../molecules/CardFooter";
@@ -7,10 +7,10 @@ import ButtonCercleOrange from "../atoms/buttons/ButtonCercleOrange";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseSettings/firebase";
-import { fetchMenus } from "../../hooks/useMenuFomat";
 import { useSetRecoilState } from "recoil";
 import { menusState } from "../recoil/states";
 import ButtonCercleOrangeEditting from "../atoms/buttons/ButtonCercleOrangeEditting";
+import { fetchMenus } from "../../api/fetch";
 
 type Props = {
   menuName: string;

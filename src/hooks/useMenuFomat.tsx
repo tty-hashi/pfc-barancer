@@ -22,36 +22,13 @@ export type MyMenus = {
   id: string;
 };
 
-export const useMenuFomat = () => {
-  return <div>useMenuFomat</div>;
-};
-
-/**
- * firebase から menus の collection を取得する
- * @return {Promise<Menus[]>}
- */
-export const fetchMenus: () => Promise<Menus[]> = async () => {
-  const menusCollection = query(collection(db, "menus"));
-  const querySnapshot = await getDocs(menusCollection);
-  let menus: Menus[] = [];
-  querySnapshot.forEach((doc) => {
-    menus.push({
-      id: doc.id,
-      uid: doc.data().uid,
-      menuDetail: doc.data().menuDetail,
-      menuName: doc.data().menuName,
-      createAt: doc.data().createAt,
-    });
-  });
-  return menus;
-};
 /**
  * ログインユーザー uid を元にの登録した献立を取得して、menuName及び、PFCとカロリーの合算した値を成形して返す。
  * @param {string} menus firebase から取得したユーザーが作成した menu の配列
  * @param {string} uid ログイン userId
  * @return myMenu 成形したオブジェクトの配列
  */
-export const filterAndCalculateMenus = (menus: Menus[], uid?: string): MyMenus[] => {
+export const useMenuFomat = (menus: Menus[], uid?: string): MyMenus[] => {
   // let filterMyMenus: Menus[];
   const [filterMyMenus, setFilterMyMenus] = useState<Menus[]>([]);
   // ログインユーザー uid を元にの登録した献立を取得
