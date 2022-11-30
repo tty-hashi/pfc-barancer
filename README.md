@@ -1,6 +1,9 @@
 # PFC-BARANCER 〜欲しい栄養素を欲しいだけ〜
-https://pfc-barancer.vercel.app/ <br>
+
 ![portfolio](https://user-images.githubusercontent.com/112939753/204744505-9d3570b1-e1b6-4315-b7ed-88473f4e517f.gif)
+
+## 🌐 App URL
+### **https://pfc-barancer.vercel.app/**
 
 ## アプリ概要
 
@@ -12,7 +15,7 @@ https://pfc-barancer.vercel.app/ <br>
 しかし、このアプリを使用すれば、自分の条件に合った商品を簡単に見つけることができます。<br>
 その上、商品を組み合わせてオリジナルのメニューを作成してそれを保存することも可能です。<br>
 
-## 作成した経緯
+## 💬 作成した経緯
 
 昼食は、コンビニを毎日利用していました。<br>
 健康創りのために昼食では、タンパク質を 20g 以上摂ること条件としていたので、毎日サラダチキンを食べていました。<br>
