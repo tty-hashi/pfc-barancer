@@ -1,6 +1,6 @@
 # PFC-BARANCER 〜欲しい栄養素を欲しいだけ〜
 
-![画面収録_2022-11-30_17_13_22_AdobeExpress](https://user-images.githubusercontent.com/112939753/204746340-cb4501ea-c704-402a-af50-4fa31db79647.gif)
+
 <img src="[画像URL](https://user-images.githubusercontent.com/112939753/204746340-cb4501ea-c704-402a-af50-4fa31db79647.gif)" width="100%">
 
 ## 🌐 App URL
