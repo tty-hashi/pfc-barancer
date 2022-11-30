@@ -1,8 +1,8 @@
 # PFC-BARANCER 〜欲しい栄養素を欲しいだけ〜
 
-![画面収録_2022-11-30_17_42_06_AdobeExpress](https://user-images.githubusercontent.com/112939753/204749341-1121d38d-ff78-4527-9e19-b5edd6857f9c.gif)
 
-<img src="https://user-images.githubusercontent.com/112939753/204749341-1121d38d-ff78-4527-9e19-b5edd6857f9c.gif" width="400px">
+
+<img src="https://user-images.githubusercontent.com/112939753/204749341-1121d38d-ff78-4527-9e19-b5edd6857f9c.gif" width="600px">
 
 ## 🌐 App URL
 ### **https://pfc-barancer.vercel.app/**
