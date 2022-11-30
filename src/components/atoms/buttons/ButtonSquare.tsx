@@ -11,7 +11,7 @@ const ButtonSquare: React.FC<Props> = (props) => {
   const { children, onClick, disabled } = props;
 
   return (
-    <Button onClick={onClick} disabled={disabled} _hover={{ opacity: "0.7" }} bg="brand.action" color="#fff" fontSize={{ md: "2xl" }} letterSpacing="0.08em" h={{ base: "40px", md: "60px" }} px={{ base: 4, md: 8 }}>
+    <Button onClick={onClick} disabled={disabled} _hover={{ opacity: "0.7" }} bg="brand.action" color="#fff" fontSize={{ base: "md", md: "2xl" }} letterSpacing="0.08em" h={{ base: "40px", md: "60px" }} px={{ base: 4, md: 8 }}>
       {children}
     </Button>
   );

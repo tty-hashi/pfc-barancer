@@ -9,7 +9,7 @@ import { goodsFetch } from "../api/fetch";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { goodsList, goodsListSource } from "../components/recoil/states";
 import BottomFixedCalorie from "../components/molecules/BottomFixedCalorie";
-import { Box } from "@chakra-ui/react";
+import { Box, Spinner } from "@chakra-ui/react";
 import ButtonSquare from "../components/atoms/buttons/ButtonSquare";
 
 export default function Home() {
@@ -17,11 +17,13 @@ export default function Home() {
   const setGoodsListSourceState = useSetRecoilState(goodsListSource);
   const [slidebarShowTriggerState, setSlidebarShowTriggerState] = useState<boolean>(true);
   const [bottomFixedCalorieHandler, setBottomFixedCalorieHandler] = useState<boolean>(false);
+  const [fetchComplete, setFetchComplete] = useState(false);
   // firebase からデータと fetch して state へ保持
   useEffect(() => {
     goodsFetch().then((result) => {
       setGoodsListState(result);
       setGoodsListSourceState(result);
+      setFetchComplete(true);
     });
   }, []);
   // slider を有効にする
@@ -52,7 +54,7 @@ export default function Home() {
           <SlidebarGrid />
         </Box>
         <Box minH="80vh" pb={{ base: "100px", md: "120px" }}>
-          <CardGrid isPageTop={true} goodsList={goodsListState} />
+          {fetchComplete ? <CardGrid isPageTop={true} goodsList={goodsListState} /> : <Spinner color="red.500" mx="auto" display="block" />}
         </Box>
       </LayoutContainer>
       {bottomFixedCalorieHandler && <BottomFixedCalorie />}
