@@ -28,7 +28,9 @@ const Header = () => {
   const onClickGoToHome = () => {
     router.push("/");
   };
-
+  const guestButtonHandler = () => {
+    setUserId("MrBq9heR2COrKBBvH7mTQFOkwvr2");
+  };
   return (
     <>
       <Box bg="brand.main" position="fixed" w="100%" zIndex="sticky">
@@ -45,7 +47,11 @@ const Header = () => {
               <DrawerMenu isOpen={isOpen} onClose={onClose} btnRef={btnRef} />
             </>
           ) : (
-            <ButtonSquare onClick={singInWithGoogle}>Sing In</ButtonSquare>
+            <>
+              <ButtonSquare onClick={singInWithGoogle}>Sing In</ButtonSquare>
+              <Box w={{ base: 2, md: 6 }} />
+              <ButtonSquare onClick={guestButtonHandler}>ゲスト</ButtonSquare>
+            </>
           )}
         </Flex>
       </Box>
