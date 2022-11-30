@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Drawer, DrawerBody, DrawerFooter, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, UnorderedList, ListItem, Box } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faDove, faFeather, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faDove, faFeather, faMailBulk, faMailForward, faMailReply, faUser } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 import ButtonSquare from "./buttons/ButtonSquare";
@@ -26,7 +26,7 @@ const DrawerMenu: React.FC<Props> = (props) => {
     { link: "/my-page", renderText: "マイページ", icon: faUser },
     { link: "/today-eat-menu", renderText: "カート", icon: faCartShopping },
     { link: "/new-menu", renderText: "新着メニュー", icon: faFeather },
-    // { link: "/popular-menu", renderText: "人気のメニュー" },
+    { link: "mailto:web-partner@tainer-web-partner.com", renderText: "不具合報告", icon: faMailBulk },
   ];
   return (
     <>
