@@ -1,6 +1,6 @@
 import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { goodsListSource, silderValueFat, silderValueCarbo, silderValueProtein } from "../../recoil/states";
+import { useRecoilState } from "recoil";
+import { silderValueProtein } from "../../recoil/states";
 import SlideBar from "./SlideBar";
 
 const SlideBarProtein = () => {
