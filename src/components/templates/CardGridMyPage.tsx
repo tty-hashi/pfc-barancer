@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import { Grid, GridItem } from "@chakra-ui/react";
 
 import CardMyPage from "../oganisms/CardMyPage";
-import { fetchMenus, filterAndCalculateMenus, MyMenus } from "../../hooks/useMenuFomat";
+import { MyMenus, useMenuFomat } from "../../hooks/useMenuFomat";
 import { useRecoilState } from "recoil";
 import { menusState } from "../recoil/states";
+import { fetchMenus } from "../../api/fetch";
 
 type Props = {
   uid?: string;
@@ -24,7 +25,7 @@ const CardGridMyPage: React.FC<Props> = (props) => {
         console.log(`fetchMenus : ${e}`);
       });
   }, []);
-  const myMenus: MyMenus[] = filterAndCalculateMenus(menus, uid);
+  const myMenus: MyMenus[] = useMenuFomat(menus, uid);
 
   return (
     <Grid templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)" }} gap={{ base: 2, md: 6 }} py={{ base: "8", md: "12" }}>
