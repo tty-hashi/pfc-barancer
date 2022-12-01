@@ -50,7 +50,7 @@ const Card: React.FC<Props> = (props) => {
   return (
     <Box bg="#fff" py={{ base: 2, md: 4 }} h="100%" px={2}>
       <CardHead goodsTitle={goodsTitle} goodsCalorie={goodsCalorie} />
-      <Box maxW="60%" mx="auto" my={{ base: 4, md: 6 }} onClick={onOpen} position="relative">
+      <Box maxW="60%" mx="auto" my={{ base: 4, md: 6 }} onClick={onOpen} position="relative" _hover={{ cursor: "pointer" }}>
         <Image src={cartImage()} alt="商品アイコン" />
       </Box>
       {userId && (

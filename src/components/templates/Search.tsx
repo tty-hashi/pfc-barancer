@@ -1,5 +1,5 @@
 import { Box, Flex } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import ButtonSquare from "../atoms/buttons/ButtonSquare";
 import InputText from "../atoms/InputText";
@@ -9,10 +9,11 @@ const Search = () => {
   const [inputText, setInputText] = useState<string>("");
   const setGoodsListState = useSetRecoilState<GoodsList[]>(goodsList);
   const goodsListSourceState = useRecoilValue<GoodsList[]>(goodsListSource);
-
-  if (inputText === "") {
-    setGoodsListState(goodsListSourceState);
-  }
+  useEffect(() => {
+    if (inputText === "") {
+      setGoodsListState(goodsListSourceState);
+    }
+  }, [inputText]);
   const onClickHandler = () => {
     const serchKeywords = inputText.trim().match(/[^\s]+/g);
     const result = goodsListSourceState.filter((item) => serchKeywords.every((kw) => item.goodsTitle.indexOf(kw) !== -1));
