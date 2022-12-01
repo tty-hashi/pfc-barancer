@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 
 import Card from "../oganisms/Card";
 import { GoodsList } from "../recoil/states";
