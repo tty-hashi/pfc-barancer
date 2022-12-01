@@ -1,6 +1,6 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Flex } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import ButtonSquare from "../atoms/buttons/ButtonSquare";
 import InputText from "../atoms/InputText";
 import { goodsList, GoodsList, goodsListSource } from "../recoil/states";
@@ -19,10 +19,14 @@ const Search = () => {
     setGoodsListState(result);
   };
   return (
-    <Box>
-      <InputText inputText={inputText} setInputText={setInputText} />
-      <ButtonSquare onClick={onClickHandler}>検索</ButtonSquare>
-    </Box>
+    <Flex mb={{ base: 6, md: 10 }}>
+      <Box mr={{ base: 4, md: 6 }} flex="1">
+        <InputText inputText={inputText} setInputText={setInputText} />
+      </Box>
+      <Box>
+        <ButtonSquare onClick={onClickHandler}>検索</ButtonSquare>
+      </Box>
+    </Flex>
   );
 };
 
