@@ -11,6 +11,7 @@ import { goodsList, goodsListSource } from "../components/recoil/states";
 import BottomFixedCalorie from "../components/molecules/BottomFixedCalorie";
 import { Box, Spinner } from "@chakra-ui/react";
 import ButtonSquare from "../components/atoms/buttons/ButtonSquare";
+import Search from "../components/templates/Search";
 
 export default function Home() {
   const [goodsListState, setGoodsListState] = useRecoilState(goodsList);
@@ -53,6 +54,7 @@ export default function Home() {
           </Box>
           <SlidebarGrid />
         </Box>
+        <Search />
         <Box minH="80vh" pb={{ base: "100px", md: "120px" }}>
           {fetchComplete ? <CardGrid isPageTop={true} goodsList={goodsListState} /> : <Spinner color="red.500" mx="auto" display="block" />}
         </Box>

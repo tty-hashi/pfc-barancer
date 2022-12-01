@@ -9,7 +9,6 @@ type Props = {
 const InputText: React.FC<Props> = (props) => {
   const { inputText, setInputText } = props;
   const fontSize = { base: "md", md: "lg" };
-  console.log(inputText);
   return (
     <>
       <Input
