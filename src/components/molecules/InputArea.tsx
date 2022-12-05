@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { AlertDialog, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Box, Flex, useDisclosure } from "@chakra-ui/react";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useRecoilState, useRecoilValue } from "recoil";
+import { TwitterIcon, TwitterShareButton } from "react-share";
 
 import { db } from "../../firebaseSettings/firebase";
 import { cart, GoodsList, userIdState } from "../recoil/states";
 import ButtonSquare from "../atoms/buttons/ButtonSquare";
 import InputText from "../atoms/InputText";
 import { useRouter } from "next/router";
+import useCalculateInCart from "../../hooks/useCalculateInCart";
 
 type Props = {
   cartGoodsDatail: GoodsList[];
@@ -15,6 +17,7 @@ type Props = {
 
 const InputArea: React.FC<Props> = (props) => {
   const { cartGoodsDatail } = props;
+  const [protein, fat, carbo, calorie] = useCalculateInCart();
   const [inputText, setInputText] = useState<string>("");
   const [cartInGoods, setCartInGoods] = useRecoilState(cart);
   const uid = useRecoilValue(userIdState);
@@ -45,6 +48,7 @@ const InputArea: React.FC<Props> = (props) => {
     setInputText("");
     setCartInGoods([]);
   };
+  const twitterShareTitle = `今日はセブンイレブンで、タンパク質${protein}g 脂質${fat}g 糖質${carbo}gの食事をしたよ！総カロリーは${calorie}kcal！`;
 
   return (
     <Flex flexDirection={{ base: "column", md: "row" }} alignItems={{ base: "flex-end", md: "start" }}>
@@ -68,6 +72,11 @@ const InputArea: React.FC<Props> = (props) => {
               マイリストにMenuを追加しました
             </AlertDialogHeader>
             <AlertDialogFooter>
+              <Box mr={8}>
+                <TwitterShareButton url="https://pfc-barancer.vercel.app/" title={twitterShareTitle} via="jsmuzui" hashtags={["pfcバランス"]}>
+                  <TwitterIcon size={50} round />
+                </TwitterShareButton>
+              </Box>
               <ButtonSquare onClick={onClickAlertInButton}>OK</ButtonSquare>
             </AlertDialogFooter>
           </AlertDialogContent>
