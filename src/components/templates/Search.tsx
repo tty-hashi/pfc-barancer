@@ -15,7 +15,10 @@ const Search = () => {
     }
   }, [inputText]);
   const onClickHandler = () => {
+    // 空白を削除して、入力された文字列グループを配列にする
     const serchKeywords = inputText.trim().match(/[^\s]+/g);
+    //入力された文字列と item.goodsTitle が合致するか filter
+    // every で入力された文字列の配列を一つずつ取り出して item.goodsTitle と突き合わせ、indexOf() で精査 (見つから無ければ-1が返る)
     const result = goodsListSourceState.filter((item) => serchKeywords.every((kw) => item.goodsTitle.indexOf(kw) !== -1));
     setGoodsListState(result);
   };

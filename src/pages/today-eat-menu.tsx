@@ -16,7 +16,7 @@ const TodayEatMenu = () => {
   // chakra レスポンシブ設定
   const initialFontSize = { base: "lg", md: "xl" };
   const initialWidth = { base: "24px", md: "30px" };
-  const CardFooterGap = { base: "6", md: "10" };
+  const cardFooterGap = { base: "6", md: "10" };
 
   const onClickGoToHome = () => {
     router.push("/");
@@ -28,10 +28,10 @@ const TodayEatMenu = () => {
         <Text fontSize={{ base: "lg", md: "2xl" }} fontWeight="700">
           {`Total:${calorie} kcal`}
         </Text>
-        <CardFooter initialFontSize={initialFontSize} initialWidth={initialWidth} gap={CardFooterGap} goodsCarbo={carbo} goodsFat={fat} goodsProtein={protein} />
+        <CardFooter initialFontSize={initialFontSize} initialWidth={initialWidth} gap={cardFooterGap} goodsCarbo={carbo} goodsFat={fat} goodsProtein={protein} />
       </Flex>
       <CardGrid isPageTop={false} goodsList={cartGoodsDatail} />
-      <Box my={CardFooterGap}>
+      <Box my={cardFooterGap}>
         <InputArea cartGoodsDatail={cartGoodsDatail} />
       </Box>
       <Box ml="auto" mr="0" w="fit-content">
