@@ -73,7 +73,7 @@ const InputArea: React.FC<Props> = (props) => {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <Box mr={8}>
-                <TwitterShareButton url="https://pfc-barancer.vercel.app/" title={twitterShareTitle} via="jsmuzui" hashtags={["pfcバランス"]}>
+                <TwitterShareButton url="https://pfc-barancer.vercel.app/" title={twitterShareTitle} via="" hashtags={["pfcバランス"]}>
                   <TwitterIcon size={50} round />
                 </TwitterShareButton>
               </Box>
