@@ -1,9 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
-import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth"; 
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from "firebase/auth";
 
-  
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -27,10 +26,11 @@ export const singInWithGoogle = () => {
     .then((result) => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const user = result.user;
-    }).catch((error) => {
+    })
+    .catch((error) => {
       console.log(error);
     });
-}
+};
 // uidの取得
 onAuthStateChanged(auth, (user) => {
   if (user) {
@@ -41,9 +41,11 @@ onAuthStateChanged(auth, (user) => {
 
 export const logOut = () => {
   const auth = getAuth();
-  signOut(auth).then((res) => {
-    document.location.reload();
-  }).catch((error) => {
-    console.log(error.message);
-  });
-}
+  signOut(auth)
+    .then(() => {
+      document.location.reload();
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+};

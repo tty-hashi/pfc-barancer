@@ -25,7 +25,6 @@ const Card: React.FC<Props> = (props) => {
   const { cercleOrangeButton, goodsId, goodsUrl, goodsCarbo, goodsFat, goodsProtein, goodsCalorie, goodsValue, goodsTitle, goodsAllData, goodsCategory } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const userId = useRecoilValue(userIdState);
-  const aaa: string = "rice";
   const cartImage: () => string = () => {
     switch (goodsCategory) {
       case "noodle":
