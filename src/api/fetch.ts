@@ -1,23 +1,27 @@
 import { collection, query, getDocs } from "firebase/firestore";
+import { GoodsList } from "../components/recoil/states";
 import { db } from "../firebaseSettings/firebase";
 import { Menus } from "../hooks/useMenuFomat";
 
 export const goodsFetch = async () => {
+  console.log("fetch goods");
   const goods = query(collection(db, "goods"));
   const querySnapshot = await getDocs(goods);
   let goodsList = [];
   querySnapshot.forEach((doc) => {
-    goodsList.push({
-      id: doc.id,
-      goodsTitle: doc.data().goodsTitle,
-      goodsValue: doc.data().goodsValue,
-      goodsCalorie: Math.floor(doc.data().goodsCalorie),
-      goodsProtein: Math.floor(doc.data().goodsProtein),
-      goodsFat: Math.floor(doc.data().goodsFat),
-      goodsCarbo: Math.floor(doc.data().goodsCarbo),
-      goodsUrl: doc.data().goodsUrl,
-      goodsAllData: doc.data().goodsAllData,
-      goodsCategory: doc.data().goodsCategory,
+    doc.data().goodsArray.forEach((goods, index: number) => {
+      goodsList.push({
+        id: doc.id,
+        goodsTitle: goods.goodsTitle,
+        goodsValue: goods.goodsValue,
+        goodsCalorie: Math.floor(goods.goodsCalorie),
+        goodsProtein: Math.floor(goods.goodsProtein),
+        goodsFat: Math.floor(goods.goodsFat),
+        goodsCarbo: Math.floor(goods.goodsCarbo),
+        goodsUrl: goods.goodsUrl,
+        goodsAllData: goods.goodsAllData,
+        goodsCategory: goods.goodsCategory,
+      });
     });
   });
   return goodsList;
@@ -28,6 +32,8 @@ export const goodsFetch = async () => {
  * @return {Promise<Menus[]>}
  */
 export const fetchMenus: () => Promise<Menus[]> = async () => {
+  console.log("fetch menu");
+
   const menusCollection = query(collection(db, "menus"));
   const querySnapshot = await getDocs(menusCollection);
   let menus: Menus[] = [];
