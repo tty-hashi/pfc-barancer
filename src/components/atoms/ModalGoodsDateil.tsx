@@ -8,7 +8,6 @@ import GoodsTitle from "../atoms/GoodsTitle";
 import GoodsPrice from "../atoms/GoodsPrice";
 import GoodsContentDateil from "../atoms/GoodsContentDateil";
 import ButtonSquare from "./buttons/ButtonSquare";
-import { useGoodsAddCart } from "../../hooks/useGoodsAddCart";
 import { useSetRecoilState } from "recoil";
 import { cart } from "../recoil/states";
 
@@ -18,7 +17,6 @@ type Props = {
   goodsCarbo: string;
   goodsFat: string;
   goodsProtein: string;
-  goodsCalorie: string;
   goodsValue: string;
   goodsTitle: string;
   goodsAllData: string;
@@ -26,7 +24,7 @@ type Props = {
 };
 
 const ModalGoodsDateil: React.FC<Props> = (props) => {
-  const { goodsId, goodsUrl, goodsCarbo, goodsFat, goodsProtein, goodsCalorie, goodsValue, goodsTitle, goodsAllData, onClose } = props;
+  const { goodsId, goodsUrl, goodsCarbo, goodsFat, goodsProtein, goodsValue, goodsTitle, goodsAllData, onClose } = props;
   const { onOpen } = useDisclosure();
   const setCartState = useSetRecoilState(cart);
 
