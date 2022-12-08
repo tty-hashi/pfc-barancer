@@ -4,7 +4,6 @@ import { db } from "../firebaseSettings/firebase";
 import { Menus } from "../hooks/useMenuFomat";
 
 export const goodsFetch = async () => {
-  console.log("fetch goods");
   const goods = query(collection(db, "goods"));
   const querySnapshot = await getDocs(goods);
   let goodsList = [];
@@ -32,8 +31,6 @@ export const goodsFetch = async () => {
  * @return {Promise<Menus[]>}
  */
 export const fetchMenus: () => Promise<Menus[]> = async () => {
-  console.log("fetch menu");
-
   const menusCollection = query(collection(db, "menus"));
   const querySnapshot = await getDocs(menusCollection);
   let menus: Menus[] = [];
