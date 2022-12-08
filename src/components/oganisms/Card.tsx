@@ -25,7 +25,6 @@ const Card: React.FC<Props> = (props) => {
   const { cercleOrangeButton, goodsId, goodsUrl, goodsCarbo, goodsFat, goodsProtein, goodsCalorie, goodsValue, goodsTitle, goodsAllData, goodsCategory } = props;
   const { isOpen, onOpen, onClose } = useDisclosure();
   const userId = useRecoilValue(userIdState);
-  const aaa: string = "rice";
   const cartImage: () => string = () => {
     switch (goodsCategory) {
       case "noodle":
@@ -62,7 +61,7 @@ const Card: React.FC<Props> = (props) => {
         <CardFooter goodsCarbo={goodsCarbo} goodsFat={goodsFat} goodsProtein={goodsProtein} />
       </Box>
       <Modal isOpen={isOpen} onClose={onClose}>
-        <ModalGoodsDateil goodsId={goodsId} goodsUrl={goodsUrl} goodsCarbo={goodsCarbo} goodsFat={goodsFat} goodsProtein={goodsProtein} goodsCalorie={goodsCalorie} goodsValue={goodsValue} goodsTitle={goodsTitle} goodsAllData={goodsAllData} onClose={onClose} />
+        <ModalGoodsDateil goodsId={goodsId} goodsUrl={goodsUrl} goodsCarbo={goodsCarbo} goodsFat={goodsFat} goodsProtein={goodsProtein} goodsValue={goodsValue} goodsTitle={goodsTitle} goodsAllData={goodsAllData} onClose={onClose} />
       </Modal>
     </Box>
   );

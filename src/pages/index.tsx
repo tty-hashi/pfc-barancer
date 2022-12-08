@@ -50,7 +50,7 @@ export default function Home() {
       <LayoutContainer>
         <Box position="relative">
           <Box zIndex="docked" position="absolute" top="0" left="0" w="100%" bottom="-6" bg="rgba(247, 210, 176, 0.7)" display={slidebarShowTriggerState ? "grid" : "none"} placeItems="center">
-            <ButtonSquare onClick={slidebarShowTrigger}>商品ソートを有効にする</ButtonSquare>
+            <ButtonSquare onClick={slidebarShowTrigger}>商品フィルターを有効にする</ButtonSquare>
           </Box>
           <SlidebarGrid />
         </Box>

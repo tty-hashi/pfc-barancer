@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
-import SlideBar from "../atoms/slideBar/SlideBar";
 import SlideBarTitle from "../molecules/SlideBarTitle";
 
 type Props = {
