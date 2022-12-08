@@ -11,7 +11,7 @@ export const goodsFetch = async () => {
   querySnapshot.forEach((doc) => {
     doc.data().goodsArray.forEach((goods, index: number) => {
       goodsList.push({
-        id: doc.id,
+        id: index,
         goodsTitle: goods.goodsTitle,
         goodsValue: goods.goodsValue,
         goodsCalorie: Math.floor(goods.goodsCalorie),
